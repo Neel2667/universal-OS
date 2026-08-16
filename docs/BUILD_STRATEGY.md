@@ -57,6 +57,7 @@ This structure is intentionally not committed until the exact Yocto release and 
 
 ### B0 — Native workspace and reproducibility
 
+- Establish a checked native host using [Native build environment](NATIVE_BUILD_ENVIRONMENT.md).
 - Pin Rust compiler, Cargo, target triples, linker, and source checksums.
 - Create a Rust workspace from the tested Python contracts.
 - Keep Python test vectors as a behavior oracle during migration.
