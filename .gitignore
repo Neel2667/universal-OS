@@ -1,0 +1,30 @@
+# OS builds and generated images
+/build/
+/out/
+/dist/
+/artifacts/
+*.img
+*.iso
+*.ota
+*.zip
+*.zst
+*.xz
+*.gz
+
+# Local secrets and signing material
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+keys/
+.env
+.env.*
+
+# Tool caches / editor files
+.cache/
+.vscode/
+.idea/
+.DS_Store
+__pycache__/
+*.py[cod]

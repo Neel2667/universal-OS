@@ -1,0 +1,25 @@
+name: Engineering task
+description: Create a bounded, implementation-ready task.
+title: "task: "
+labels: ["type: task", "needs-triage"]
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Context and scope
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Include required tests, documentation, and evidence.
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and risks
+      description: List blocking issues, ADRs, risk IDs, or state "none known".
+    validations:
+      required: true
