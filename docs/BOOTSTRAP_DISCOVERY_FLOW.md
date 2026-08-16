@@ -65,7 +65,7 @@ Discovery must use technical compatibility facts, not personal data.
 | storage/power/display/input/network capability state | phone number/SIM identity |
 | verified-boot and rollback features | cloud account identifiers |
 
-The device maps local facts to a profile such as `uos.profile.<family>.<architecture>.v1`. The profile determines eligibility; a cloud server cannot override it.
+The device maps local facts to a profile such as `uos.profile.<family>.<architecture>.v1`. The profile determines eligibility; a cloud server cannot override it. See [Signed hardware profile catalog](SIGNED_PROFILE_CATALOG.md) for the exact signed local matching rules.
 
 ## Package selection rules
 

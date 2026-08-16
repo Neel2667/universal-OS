@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universalos.dev/specs/hardware-profile/measured-facts-v1.json",
+  "title": "UniversalOS locally measured hardware facts v1",
+  "description": "Non-personal facts measured by UniversalOS Discovery Base after the device has booted. This is distinct from preliminary installer discovery and is used for signed hardware profile selection.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "architecture", "board_family", "soc_family", "revision_class", "partition_model", "kernel_abi"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "architecture": {"enum": ["arm64", "armv7", "x86_64", "riscv64"]},
+    "board_family": {"type": "string", "minLength": 1, "maxLength": 120},
+    "soc_family": {"type": "string", "minLength": 1, "maxLength": 120},
+    "revision_class": {"type": "string", "minLength": 1, "maxLength": 120},
+    "partition_model": {"enum": ["ab", "transactional", "single-slot"]},
+    "kernel_abi": {"type": "string", "minLength": 1, "maxLength": 120}
+  }
+}

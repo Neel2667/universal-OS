@@ -23,7 +23,7 @@ from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey,
 from .contracts import _mapping, _require_keys, _string
 from .errors import ContractError, TrustError
 
-METADATA_ROLES = frozenset({"root", "targets", "bootstrap"})
+METADATA_ROLES = frozenset({"root", "targets", "bootstrap", "profiles"})
 
 
 def _parse_timestamp(value: Any, name: str) -> datetime:

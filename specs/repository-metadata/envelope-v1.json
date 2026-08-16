@@ -8,7 +8,7 @@
   "required": ["schema_version", "role", "version", "expires", "signed", "signatures"],
   "properties": {
     "schema_version": {"const": 1},
-    "role": {"enum": ["root", "targets", "bootstrap"]},
+    "role": {"enum": ["root", "targets", "bootstrap", "profiles"]},
     "version": {"type": "integer", "minimum": 1},
     "expires": {"type": "string", "format": "date-time"},
     "signed": {"type": "object"},

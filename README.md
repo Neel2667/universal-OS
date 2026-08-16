@@ -28,6 +28,7 @@ UniversalOS aims to make supported mobile hardware useful for longer through **o
 - [Bootstrap-to-full-system flow](docs/BOOTSTRAP_DISCOVERY_FLOW.md)
 - [Universal Installer and Bootstrap Capsule contracts](docs/BOOTSTRAP_CONTRACTS.md)
 - [Portable core contracts](docs/CORE_CONTRACTS.md)
+- [Signed hardware profile catalog](docs/SIGNED_PROFILE_CATALOG.md)
 - [Signed registry metadata and trust root](docs/REGISTRY_TRUST.md)
 - [Signed test repository laboratory](docs/TEST_REPOSITORY.md)
 - [Verified target binding and safe installation model](docs/SAFE_INSTALLATION.md)
