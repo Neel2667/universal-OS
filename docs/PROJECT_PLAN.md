@@ -2,7 +2,7 @@
 
 ## 1. Mission and first proof
 
-**Mission:** extend the useful life of supported mobile hardware by making core system updates independent from the pace of a device vendor, without weakening boot security or hiding device-specific limitations.
+**Mission:** deliver one portable mobile operating-system core that extends the useful life of supported hardware through small, signed device-enablement packages—without weakening boot security, hiding device limitations, or creating a product fork per phone.
 
 **Version 0.1 proof:** on one selected unlockable target (or a faithful emulator before hardware), an experienced developer can:
 
@@ -15,16 +15,17 @@
 7. reboot successfully; and
 8. recover automatically or manually from a deliberately bad update.
 
-This proof is more important than a polished launcher. It establishes the product's hardest promise: safe, durable support.
+This proof is more important than a polished launcher. It establishes the product's hardest promise: safe, durable support while demonstrating that the core is independent of a specific handset.
 
 ## 2. Non-negotiable technical reality
 
 A mobile device cannot start from a generic network-only image. Before reliable networking, storage, display, touch, and radio access are available, the device needs a chain of locally available, device-compatible firmware and software. Some of that code is proprietary and some devices have permanently locked bootloaders.
 
-Therefore, UniversalOS uses a **two-layer model**:
+Therefore, UniversalOS uses a **portable-core and device-enablement model**:
 
-- **Bootstrap / hardware enablement layer:** local, minimal, signed, and specific to an approved device family. It includes the boot configuration, kernel/device tree, essential modules, firmware required to start, and recovery/update client.
-- **UniversalOS system layer:** a signed, updateable, mostly hardware-independent user-space system, shell, services, and approved optional packages.
+- **Device trust/bootstrap layer:** local, minimal, signed, and specific to an approved board/SoC family. It includes the boot configuration, kernel/device tree, essential modules, firmware required to start, and recovery integration.
+- **Device-enablement layer:** a small, versioned hardware profile plus compatible module/firmware/service packages behind stable contracts.
+- **UniversalOS core:** a signed, updateable, hardware-independent user-space system, shell, services, app/runtime APIs, and approved optional packages. It must not be forked per phone.
 
 The cloud is a signed distribution service—not a root of trust and not a source of executable code that bypasses local verification.
 

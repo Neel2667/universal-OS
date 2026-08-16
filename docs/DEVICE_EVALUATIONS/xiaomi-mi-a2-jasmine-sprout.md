@@ -19,6 +19,10 @@
 
 The Ubuntu Touch device page currently describes the Mi A2 port as Halium 9-based, built on the outdated Xenial release, unmaintained, and inactive since 2023. It also warns that the Mi A2 has a buggy fastboot implementation and that the port required a specific Android 9 build before installation. That history confirms the device is a useful lab target, but also makes **baseline preservation and cautious recovery work mandatory**.
 
+## Role in the universal architecture
+
+The Mi A2 is a **non-exclusive lab profile**, not the base OS target and not a model-specific UniversalOS product. It will be used to test whether the portable core, profile schema, device-enablement packages, update process, and recovery contracts work on real hardware. A second structurally different device must later validate that the core did not accidentally become Mi A2-specific.
+
 ## Provisional conclusion
 
 The Mi A2 is a **credible research and developer bring-up candidate**, because it has a documented Android custom-ROM history, an unlock path described in the LineageOS guide, public Xiaomi kernel-source history, a known Android device codename, and modest 4/6 GB RAM hardware that makes it useful for testing a lightweight system.

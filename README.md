@@ -2,11 +2,11 @@
 
 > A long-lived, secure, device-adaptive mobile operating-system research project.
 
-UniversalOS aims to make supported mobile hardware useful for longer by separating a small, verified hardware bootstrap from an updateable system and signed device-support packages. It is **not** an attempt to download arbitrary drivers before a phone can boot: the essential boot chain and the device-specific kernel/bootstrap must exist locally and be cryptographically verified.
+UniversalOS aims to make supported mobile hardware useful for longer through **one portable OS core** with small, signed device-enablement packages. It is **not** an attempt to download arbitrary drivers before a phone can boot: the essential boot chain and a minimal target-compatible bootstrap must exist locally and be cryptographically verified. The system UI, services, update client, app model, and security policy are shared—not forked per phone.
 
 ## Project status
 
-**Planning and architecture phase.** No device is supported yet, and this repository does not provide a flashable operating-system image. The first engineering goal is to select one unlockable Android-family reference device and produce a reproducible, recoverable developer boot path.
+**Planning and architecture phase.** No device is supported yet, and this repository does not provide a flashable operating-system image. The first engineering goal is to prove the portable core and device-enablement contracts with a reproducible, recoverable developer boot path on a lab device; that laboratory device does not define a separate product build.
 
 ## Principles
 
@@ -20,6 +20,7 @@ UniversalOS aims to make supported mobile hardware useful for longer by separati
 
 - [End-to-end project plan](docs/PROJECT_PLAN.md)
 - [System architecture](docs/ARCHITECTURE.md)
+- [Universality model](docs/UNIVERSALITY_MODEL.md)
 - [Risk register](docs/RISK_REGISTER.md)
 - [Decision log](docs/DECISIONS.md)
 - [Definition of done](docs/DEFINITION_OF_DONE.md)
@@ -32,7 +33,7 @@ UniversalOS aims to make supported mobile hardware useful for longer by separati
 
 ## Scope boundary for version 0.1
 
-UniversalOS will first target **one community-friendly, bootloader-unlockable Android-family device or an emulator**, with a developer-only installation flow. The initial release will validate the boot, recovery, update, and compatibility model. Broad device support, a consumer app ecosystem, cellular certification, and iPhone support are explicitly out of scope until the reference implementation has passed its gates.
+UniversalOS will first validate **one portable core** against an emulator and a community-friendly, bootloader-unlockable Android-family lab device, with a developer-only installation flow. The initial release validates the reusable boot, recovery, update, profile, and compatibility contracts—not a device-specific product fork. Broad device support, a consumer app ecosystem, cellular certification, and iPhone support are explicitly out of scope until the reference implementation has passed its gates.
 
 ## Working on the project
 

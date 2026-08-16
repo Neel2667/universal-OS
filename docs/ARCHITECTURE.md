@@ -2,7 +2,7 @@
 
 ## Design objective
 
-Keep the minimum device-dependent code small, auditable, locally available, and securely verified. Deliver higher-level functionality through signed, compatible, rollback-safe releases.
+Keep the minimum device-dependent code small, auditable, locally available, and securely verified. The shared UniversalOS core must be portable and consume hardware profiles/capabilities, never model-specific product branches. Deliver higher-level functionality through signed, compatible, rollback-safe releases.
 
 ```text
  ROM / immutable silicon root
@@ -53,7 +53,7 @@ Minimum fields:
 - test status and issue references;
 - signer, creation/expiry, and revocation information.
 
-The local bootstrap reads stable identifiers, maps them to an embedded/verified profile, then asks the resolver for *candidates*. The local policy engine makes the final acceptance decision.
+The local bootstrap reads stable identifiers, maps them to an embedded/verified profile, then asks the resolver for *candidates*. The local policy engine makes the final acceptance decision. The core sees the profile capabilities and contracts, not a phone model name.
 
 ## Update lifecycle
 
