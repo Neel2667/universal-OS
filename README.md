@@ -20,6 +20,9 @@ UniversalOS aims to make supported mobile hardware useful for longer through **o
 
 - [End-to-end project plan](docs/PROJECT_PLAN.md)
 - [System architecture](docs/ARCHITECTURE.md)
+- [Accepted system/hardware base decision](docs/adr/ADR-002-system-and-hardware-base.md)
+- [Discovery Base build strategy](docs/BUILD_STRATEGY.md)
+- [Managed workstreams](docs/WORKSTREAMS.md)
 - [Universality model](docs/UNIVERSALITY_MODEL.md)
 - [Bootstrap-to-full-system flow](docs/BOOTSTRAP_DISCOVERY_FLOW.md)
 - [Universal Installer and Bootstrap Capsule contracts](docs/BOOTSTRAP_CONTRACTS.md)

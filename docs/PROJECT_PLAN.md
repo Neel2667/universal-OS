@@ -34,7 +34,7 @@ The cloud is a signed distribution service—not a root of trust and not a sourc
 | Decision | Decision criteria | Gate |
 | --- | --- | --- |
 | First device | unlockable bootloader, documented restore process, kernel source availability, active community, affordable availability, usable mainline/vendor support | ADR-001 |
-| Base technology | ability to reuse legal hardware enablement, update isolation, security posture, Android-app strategy, team skill | ADR-002 |
+| Base technology | **Accepted:** Rust-first UniversalOS Core; Yocto/OE Discovery Base; Linux/vendor hardware adapters isolated in Bootstrap Capsules | ADR-002 |
 | App model | Android compatibility, web-first, Linux applications, or a new SDK; security and developer adoption implications | ADR-003 |
 | Update metadata | signed roles, threshold keys, expiry, rollback policy, mirror strategy | ADR-004 |
 | Data/privacy model | account optionality, telemetry default, crash-report consent, diagnostic retention | ADR-005 |

@@ -14,7 +14,7 @@ Architecture decisions are immutable once accepted; a later ADR supersedes rathe
 | ID | Title | Status | Decision needed before |
 | --- | --- | --- | --- |
 | ADR-001 | Select the reference device | Proposed | bootstrap implementation |
-| ADR-002 | Select the initial system/hardware base | Proposed | bootstrap implementation |
+| ADR-002 | Select the initial system/hardware base | Accepted — see `adr/ADR-002-system-and-hardware-base.md` | native Discovery Base implementation |
 | ADR-003 | Select the application compatibility strategy | Proposed | application-runtime work |
 | ADR-004 | Adopt signed update metadata and key roles | Proposed | update-agent implementation |
 | ADR-005 | Define privacy, telemetry, and account policy | Proposed | any cloud-connected preview |
