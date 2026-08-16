@@ -11,6 +11,7 @@ Use this checklist to provide the facts needed for [issue #3: ADR-001](https://g
 - Whether **Developer options → OEM unlocking** is visible, enabled, disabled, greyed out, or unknown. Do not change it just for this intake.
 - Whether the phone is carrier-financed, enterprise-managed, or has any known bootloader restriction.
 - Current major hardware condition: display/touch, charging, battery, cameras, Wi-Fi, Bluetooth, cellular, fingerprint, and storage.
+- Current installed OS (stock Android, Ubuntu Touch, another Linux/mobile OS) and exact version/channel. If Ubuntu Touch is installed, do **not** rerun its installer merely to inspect the phone; it can write partitions.
 - Links to the manufacturer's bootloader-unlock and factory-restore documentation, if you can find them.
 - Whether losing local data is acceptable later. A bootloader unlock often performs a factory reset.
 

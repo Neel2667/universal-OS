@@ -3,9 +3,21 @@
 - **Status:** candidate under evaluation; **not supported** and no flashing is authorized by this document.
 - **Decision issue:** [#3 — ADR-001](https://github.com/Neel2667/universal-OS/issues/3)
 - **Evaluation date:** 2026-08-16
-- **User-provided identity:** Xiaomi Mi A2. Exact model/region, RAM/storage configuration, installed build, bootloader state, and physical condition are still unknown.
+- **User-provided identity:** Xiaomi Mi A2, 6 GB RAM, India variant, bootloader already unlocked, currently running Ubuntu Touch. The user reports Android 9 as the provisioning base. Exact model number, storage capacity, Ubuntu Touch channel/build, slot state, boot/vendor image versions, and physical condition are still unknown.
 
 > Do not confuse this phone with the newer **Redmi A2**. This evaluation is for the 2018 Android One **Xiaomi Mi A2**, conventionally called `jasmine_sprout` by the Android ROM ecosystem.
+
+## Actual developer device record — user supplied
+
+| Field | Reported value | Interpretation / verification status |
+| --- | --- | --- |
+| Bootloader | Unlocked | Removes the first installation barrier; keep it unlocked during research. Do not relock until a correct stock restore image and partition model are verified. |
+| Current runtime | Ubuntu Touch | Useful evidence that this handset can boot a Linux-oriented mobile stack. Exact Ubuntu Touch channel/build is needed. |
+| Android version | Android 9 | Likely means the Android 9/Halium vendor base that the Mi A2 Ubuntu Touch port requires, rather than the current visible OS. Confirm through read-only baseline data. |
+| Memory | 6 GB RAM | Good configuration for a lightweight-system performance baseline; storage capacity still needed. |
+| Market | India | Record for modem/firmware and restore-artifact compatibility; this does not by itself identify a unique handset. |
+
+The Ubuntu Touch device page currently describes the Mi A2 port as Halium 9-based, built on the outdated Xenial release, unmaintained, and inactive since 2023. It also warns that the Mi A2 has a buggy fastboot implementation and that the port required a specific Android 9 build before installation. That history confirms the device is a useful lab target, but also makes **baseline preservation and cautious recovery work mandatory**.
 
 ## Provisional conclusion
 
@@ -57,16 +69,21 @@ It is **not currently a credible public-preview or long-term supported-device ca
 | Public developer-preview target | **Rejected for now** | Cannot be approved until kernel/vendor-security and recovery evidence meet the project definition of done. |
 | Consumer/daily-driver target | **Out of scope** | No telephony, emergency, camera, biometric, DRM/payment, or security-lifecycle promise is justified. |
 
-## Safe intake steps — no unlocking or flashing
+## Safe next steps — preserve Ubuntu Touch; no flashing
 
-1. Record the information requested in the [reference-device intake checklist](../REFERENCE_DEVICE_INTAKE.md): exact model, region, RAM/storage, Android build number, whether OEM unlocking is visible, device condition, and whether later data wipe is acceptable.
-2. Back up personal data now, but **do not enable OEM unlocking or run unlock/flash/relock commands yet**.
-3. Confirm normal stock behavior before experimentation: boot, display/touch, charging, Wi-Fi, Bluetooth, audio, cameras, fingerprint, GPS, calls/SMS, and data—without publishing sensitive logs or identifiers.
-4. Identify a trustworthy factory-restore route and verify the exact artifact filename, hash/signature, tooling, and whether the procedure needs an unlocked or critical-unlocked bootloader.
-5. Only then schedule a separately reviewed, developer-only unlock/recovery rehearsal on a device whose data may be erased.
+The bootloader is already unlocked, so there is no reason to run an unlock command. **Do not run the UBports Installer, re-flash Android 9, change slots, install TWRP, use Mi Flash, or relock the bootloader.** The historical Ubuntu Touch installer can write `vendor` and `boot` and format system/cache/user data; it is not a harmless inspection tool.
+
+1. Make an ordinary user-data backup from Ubuntu Touch first. Verify that copied files open on another device. This is a data backup only, not yet a partition backup.
+2. Record the Ubuntu Touch version/channel from Settings → About, the exact marketed model, storage capacity, and a short feature status (display/touch, charging, Wi-Fi, Bluetooth, audio, cameras, GPS, calls/SMS, mobile data, fingerprint).
+3. Optionally run the committed [read-only baseline collector](../../tools/device-intake/collect-mi-a2-ubuntu-touch-baseline.sh) from your own computer. It requires an explicit `--consent-read-only` argument, only uses ADB read commands, and never uploads output. Inspect/redact its text before sharing it.
+4. Preserve the baseline record and identify a trustworthy stock-restore route. Verify exact artifact filename, hash/signature, region match, tooling, and data-loss/relock consequences before any recovery rehearsal.
+5. After the above evidence is reviewed, schedule a separate developer-only **recovery rehearsal**. It must prove return to the current known-good state before UniversalOS writes any bootable partition.
+
+Do not send IMEI/serial numbers, MAC addresses, SIM/phone numbers, account data, unlock tokens, or unredacted full logs.
 
 ## Evidence sources
 
+- [Ubuntu Touch device page: Xiaomi Mi A2 (`jasmine_sprout`)](https://devices.ubuntu-touch.io/device/jasmine-sprout/release/xenial/) — current port status, Android 9 prerequisite, fastboot caution, and historic release information.
 - [LineageOS device page: Xiaomi Mi A2 (`jasmine_sprout`)](https://wiki.lineageos.org/devices/jasmine_sprout/) — current device status, specifications, kernel line, boot-mode references.
 - [LineageOS installation guide](https://wiki.lineageos.org/devices/jasmine_sprout/install/) — historic unlock/recovery procedure and data-wipe warning.
 - [LineageOS build guide](https://wiki.lineageos.org/devices/jasmine_sprout/build/) — historic source/build and proprietary-blob extraction context.
