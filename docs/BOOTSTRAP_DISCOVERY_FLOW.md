@@ -67,6 +67,10 @@ Discovery must use technical compatibility facts, not personal data.
 
 The device maps local facts to a profile such as `uos.profile.<family>.<architecture>.v1`. The profile determines eligibility; a cloud server cannot override it. See [Signed hardware profile catalog](SIGNED_PROFILE_CATALOG.md) for the exact signed local matching rules.
 
+## Connectivity without a lengthy first setup
+
+The preferred first installation uses a computer-connected USB Universal Installer. The computer downloads signed candidates and transfers them locally; the phone independently validates them. This avoids requiring Wi-Fi or cellular drivers before Discovery Base is available. After boot, Wi-Fi, USB relay, Ethernet, or offline package paths can be selected by the user/profile. See [Connectivity bootstrap and installation data flow](CONNECTIVITY_BOOTSTRAP.md).
+
 ## Package selection rules
 
 The resolver must choose a complete compatible set, not merely one driver:
