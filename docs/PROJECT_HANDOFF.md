@@ -44,10 +44,11 @@ The cloud distributes candidates; the local device verifier makes the security a
 4. [Accepted ADR-002](adr/ADR-002-system-and-hardware-base.md)
 5. [Bootstrap-to-full-system flow](BOOTSTRAP_DISCOVERY_FLOW.md)
 6. [Connectivity bootstrap](CONNECTIVITY_BOOTSTRAP.md)
-7. [Managed workstreams](WORKSTREAMS.md)
-8. [Project plan](PROJECT_PLAN.md)
-9. [Risk register](RISK_REGISTER.md) and [threat model](THREAT_MODEL.md)
-10. [Definition of done](DEFINITION_OF_DONE.md)
+7. [Universal Installer rehearsal](INSTALLER_REHEARSAL.md)
+8. [Managed workstreams](WORKSTREAMS.md)
+9. [Project plan](PROJECT_PLAN.md)
+10. [Risk register](RISK_REGISTER.md) and [threat model](THREAT_MODEL.md)
+11. [Definition of done](DEFINITION_OF_DONE.md)
 
 ## What exists in code today
 
@@ -66,6 +67,7 @@ preflight, staging, transaction journal, health, rollback model
 capability-gated local service protocol
 Linux Unix-domain peer-authenticated IPC reference
 USB/offline chunked resumable verified transfer model
+end-to-end installer rehearsal chaining signed bootstrap/profile/targets/transfer
 source/firmware/model provenance metadata validation
 ```
 
