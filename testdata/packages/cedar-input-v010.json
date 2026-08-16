@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "package_id": "uos.device.cedar.input",
+  "version": "0.1.0",
+  "kind": "device-support",
+  "provides": {"component": "input-service"},
+  "compatibility": {"architectures": ["armv7"], "profile_ids": ["uos.profile.synthetic.cedar-armv7-v1"], "kernel_abi": "uos-kabi-cedar-2", "bootstrap_version_range": ">=0.1.0 <0.2.0", "required_capabilities": {"input": "working"}},
+  "payload": {"sha256": "6666666666666666666666666666666666666666666666666666666666666666", "bytes": 48, "install_mode": "transactional"},
+  "security": {"signer": "fixture-root", "signature": "fixture:fixture-root:trusted", "expires": "2030-01-01T00:00:00Z"}
+}

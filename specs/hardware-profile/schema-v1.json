@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universalos.dev/specs/hardware-profile/schema-v1.json",
+  "title": "UniversalOS Hardware Profile v1",
+  "description": "A signed, non-personal device compatibility profile. A profile describes a board class; it never contains an IMEI, serial number, account identifier, or MAC address.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "profile_id",
+    "display_name",
+    "support_tier",
+    "architecture",
+    "hardware",
+    "boot",
+    "capabilities",
+    "device_support"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "profile_id": {
+      "type": "string",
+      "pattern": "^uos\\.profile\\.[a-z0-9][a-z0-9._-]*$"
+    },
+    "display_name": { "type": "string", "minLength": 1, "maxLength": 120 },
+    "support_tier": {
+      "enum": ["profiled", "lab", "verified", "maintained", "retired"]
+    },
+    "architecture": { "enum": ["arm64", "armv7", "x86_64", "riscv64"] },
+    "hardware": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["board_family", "soc_family"],
+      "properties": {
+        "board_family": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "soc_family": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "revision_range": { "type": "string", "maxLength": 120 }
+      }
+    },
+    "boot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bootstrap_version",
+        "kernel_abi",
+        "partition_model",
+        "verified_boot",
+        "rollback_protection"
+      ],
+      "properties": {
+        "bootstrap_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+        "kernel_abi": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "partition_model": { "enum": ["ab", "transactional", "single-slot"] },
+        "verified_boot": { "enum": ["enforced", "available", "unavailable", "unknown"] },
+        "rollback_protection": { "enum": ["enforced", "available", "unavailable", "unknown"] }
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "enum": ["working", "partial", "unavailable", "untested", "blocked", "unsafe"]
+      }
+    },
+    "device_support": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required_components"],
+      "properties": {
+        "required_components": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$" },
+          "uniqueItems": true
+        },
+        "provenance_state": { "enum": ["complete", "in-review", "blocked"] }
+      }
+    }
+  }
+}

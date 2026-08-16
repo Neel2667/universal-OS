@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "package_id": "uos.core.arm64",
+  "version": "0.1.0",
+  "kind": "core",
+  "provides": {"component": "core"},
+  "compatibility": {"architectures": ["arm64"], "profile_ids": ["*"], "bootstrap_version_range": ">=0.1.0 <0.2.0"},
+  "payload": {"sha256": "1111111111111111111111111111111111111111111111111111111111111111", "bytes": 1024, "install_mode": "inactive-slot"},
+  "security": {"signer": "fixture-root", "signature": "fixture:fixture-root:trusted", "expires": "2030-01-01T00:00:00Z"}
+}

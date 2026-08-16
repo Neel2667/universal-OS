@@ -21,6 +21,7 @@ UniversalOS aims to make supported mobile hardware useful for longer through **o
 - [End-to-end project plan](docs/PROJECT_PLAN.md)
 - [System architecture](docs/ARCHITECTURE.md)
 - [Universality model](docs/UNIVERSALITY_MODEL.md)
+- [Portable core contracts](docs/CORE_CONTRACTS.md)
 - [Risk register](docs/RISK_REGISTER.md)
 - [Decision log](docs/DECISIONS.md)
 - [Definition of done](docs/DEFINITION_OF_DONE.md)
@@ -34,6 +35,17 @@ UniversalOS aims to make supported mobile hardware useful for longer through **o
 ## Scope boundary for version 0.1
 
 UniversalOS will first validate **one portable core** against an emulator and a community-friendly, bootloader-unlockable Android-family lab device, with a developer-only installation flow. The initial release validates the reusable boot, recovery, update, profile, and compatibility contracts—not a device-specific product fork. Broad device support, a consumer app ecosystem, cellular certification, and iPhone support are explicitly out of scope until the reference implementation has passed its gates.
+
+## Portable core prototype
+
+The first executable, device-independent foundation is available in `core/universal_core`. It validates portable hardware profiles and package manifests, then resolves compatible core/device-support fixtures without any phone model logic. It is a **host-side prototype only** and cannot flash or boot a phone.
+
+```sh
+python3 tools/validate_contracts.py
+python3 -m unittest discover -s tests -v
+```
+
+See [Portable core contracts](docs/CORE_CONTRACTS.md) for its security boundary and next gates.
 
 ## Working on the project
 
