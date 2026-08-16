@@ -39,14 +39,15 @@ The cloud distributes candidates; the local device verifier makes the security a
 ## Read in this order
 
 1. [README](../README.md)
-2. [Universality model](UNIVERSALITY_MODEL.md)
-3. [Accepted ADR-002](adr/ADR-002-system-and-hardware-base.md)
-4. [Bootstrap-to-full-system flow](BOOTSTRAP_DISCOVERY_FLOW.md)
-5. [Connectivity bootstrap](CONNECTIVITY_BOOTSTRAP.md)
-6. [Managed workstreams](WORKSTREAMS.md)
-7. [Project plan](PROJECT_PLAN.md)
-8. [Risk register](RISK_REGISTER.md) and [threat model](THREAT_MODEL.md)
-9. [Definition of done](DEFINITION_OF_DONE.md)
+2. [Signed Bootstrap Capsule catalog](SIGNED_BOOTSTRAP_CATALOG.md)
+3. [Universality model](UNIVERSALITY_MODEL.md)
+4. [Accepted ADR-002](adr/ADR-002-system-and-hardware-base.md)
+5. [Bootstrap-to-full-system flow](BOOTSTRAP_DISCOVERY_FLOW.md)
+6. [Connectivity bootstrap](CONNECTIVITY_BOOTSTRAP.md)
+7. [Managed workstreams](WORKSTREAMS.md)
+8. [Project plan](PROJECT_PLAN.md)
+9. [Risk register](RISK_REGISTER.md) and [threat model](THREAT_MODEL.md)
+10. [Definition of done](DEFINITION_OF_DONE.md)
 
 ## What exists in code today
 
@@ -55,6 +56,7 @@ The Python reference model implements and tests:
 ```text
 hardware discovery records
 Bootstrap Capsule selection
+signed Bootstrap Capsule catalog
 signed exact hardware profiles
 package compatibility resolver
 Ed25519 root/threshold/rotation/expiry/rollback metadata checks

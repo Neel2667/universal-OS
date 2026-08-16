@@ -13,6 +13,7 @@ from typing import Any, Iterable, Mapping
 from .contracts import ARCHITECTURES, _mapping, _require_keys, _string
 from .discovery import DiscoveryRecord, PARTITION_MODELS, TRANSPORTS
 from .errors import ContractError, ResolutionError, TrustError
+from .registry import MetadataState, SignedMetadata, TrustRoot, verify_and_accept
 from .trust import TrustVerifier
 from .versioning import parse_version
 
@@ -153,6 +154,65 @@ def _matches(record: DiscoveryRecord, capsule: BootstrapCapsule) -> str | None:
     return None
 
 
+@dataclass(frozen=True)
+class BootstrapCatalog:
+    """Capsules supplied only after verified role=bootstrap metadata."""
+
+    capsules: tuple[BootstrapCapsule, ...]
+
+    @classmethod
+    def from_metadata(cls, metadata: SignedMetadata) -> "BootstrapCatalog":
+        if metadata.role != "bootstrap":
+            raise ContractError("BootstrapCatalog requires verified role=bootstrap metadata")
+        _require_keys(metadata.signed, "bootstrap signed body", frozenset({"capsules"}), frozenset({"capsules"}))
+        raw_capsules = metadata.signed["capsules"]
+        if not isinstance(raw_capsules, list) or not raw_capsules:
+            raise ContractError("bootstrap signed body.capsules must be a non-empty array")
+        capsules = tuple(BootstrapCapsule.from_dict(_mapping(raw, "bootstrap catalog capsule")) for raw in raw_capsules)
+        ids_and_versions = {(capsule.capsule_id, capsule.version) for capsule in capsules}
+        if len(ids_and_versions) != len(capsules):
+            raise ContractError("bootstrap catalog contains duplicate capsule id/version")
+        return cls(capsules)
+
+
+def _select_accepted_bootstrap(record: DiscoveryRecord, capsules: Iterable[BootstrapCapsule]) -> BootstrapPlan:
+    if record.bootloader_state != "unlocked":
+        raise ResolutionError("Discovery Base cannot be installed: bootloader is not confirmed unlocked")
+    candidates: list[BootstrapCapsule] = []
+    rejections: list[BootstrapRejection] = []
+    for capsule in capsules:
+        mismatch = _matches(record, capsule)
+        if mismatch:
+            rejections.append(BootstrapRejection(capsule.capsule_id, mismatch))
+            continue
+        candidates.append(capsule)
+    if not candidates:
+        raise ResolutionError(f"no compatible Bootstrap Capsule matches discovery record {record.record_id}")
+    newest_version = max(parse_version(item.version) for item in candidates)
+    newest = [item for item in candidates if parse_version(item.version) == newest_version]
+    if len(newest) != 1:
+        ids = ", ".join(sorted(item.capsule_id for item in newest))
+        raise ResolutionError(f"ambiguous newest Bootstrap Capsule selection: {ids}")
+    return BootstrapPlan(record.record_id, newest[0], tuple(rejections))
+
+
+def verify_and_load_bootstrap_catalog(
+    root: TrustRoot,
+    metadata: SignedMetadata,
+    state: MetadataState,
+    *,
+    now: datetime,
+) -> tuple[BootstrapCatalog, MetadataState]:
+    """Verify bootstrap role metadata before a capsule becomes selectable."""
+    next_state = verify_and_accept(root, metadata, "bootstrap", state, now)
+    return BootstrapCatalog.from_metadata(metadata), next_state
+
+
+def select_catalog_bootstrap(record: DiscoveryRecord, catalog: BootstrapCatalog) -> BootstrapPlan:
+    """Select only from a previously verified signed bootstrap catalog."""
+    return _select_accepted_bootstrap(record, catalog.capsules)
+
+
 def select_bootstrap(
     record: DiscoveryRecord,
     capsules: Iterable[BootstrapCapsule],
@@ -161,31 +221,18 @@ def select_bootstrap(
     now: datetime | None = None,
 ) -> BootstrapPlan:
     """Fail closed unless one unambiguous trusted capsule matches preliminary facts."""
-    if record.bootloader_state != "unlocked":
-        raise ResolutionError("Discovery Base cannot be installed: bootloader is not confirmed unlocked")
     timestamp = now or datetime.now(timezone.utc)
     if timestamp.tzinfo is None:
         raise ResolutionError("selection time must include a timezone")
 
-    candidates: list[BootstrapCapsule] = []
-    rejections: list[BootstrapRejection] = []
+    trusted: list[BootstrapCapsule] = []
+    trust_rejections: list[BootstrapRejection] = []
     for capsule in capsules:
         try:
             verifier.verify(capsule, timestamp)
         except TrustError as exc:
-            rejections.append(BootstrapRejection(capsule.capsule_id, f"trust rejected: {exc}"))
+            trust_rejections.append(BootstrapRejection(capsule.capsule_id, f"trust rejected: {exc}"))
             continue
-        mismatch = _matches(record, capsule)
-        if mismatch:
-            rejections.append(BootstrapRejection(capsule.capsule_id, mismatch))
-            continue
-        candidates.append(capsule)
-
-    if not candidates:
-        raise ResolutionError(f"no trusted Bootstrap Capsule matches discovery record {record.record_id}")
-    newest_version = max(parse_version(item.version) for item in candidates)
-    newest = [item for item in candidates if parse_version(item.version) == newest_version]
-    if len(newest) != 1:
-        ids = ", ".join(sorted(item.capsule_id for item in newest))
-        raise ResolutionError(f"ambiguous newest Bootstrap Capsule selection: {ids}")
-    return BootstrapPlan(record.record_id, newest[0], tuple(rejections))
+        trusted.append(capsule)
+    plan = _select_accepted_bootstrap(record, trusted)
+    return BootstrapPlan(plan.discovery_record_id, plan.capsule, (*trust_rejections, *plan.rejections))
