@@ -60,7 +60,7 @@ A missing core or required device component is a hard failure. Incompatible or u
 
 ## Next implementation gates
 
-1. Replace fixture trust with signed test-repository metadata and real cryptography.
+1. Integrate verified signed repository targets with package-manifest and artifact-digest verification; see [Signed registry metadata and trust root](REGISTRY_TRUST.md).
 2. Add profile signature/provenance validation and versioned schema migration rules.
 3. Add an update-state journal plus a staging/rollback simulator.
 4. Build an architecture-independent system-service interface around this resolver.

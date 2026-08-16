@@ -34,7 +34,7 @@ The resolver rejects wildcard board/SoC bootstrap manifests. A broad "try this o
 
 ## Test-only trust boundary
 
-The prototype uses `FixtureTrustVerifier`, which accepts deterministic fixture markers. It is not cryptography and cannot authorize an actual capsule or any downloaded artifact. Real signing, threshold roles, root rotation, revocation, artifact digest verification, and downloader/write-path controls remain future security gates.
+The bootstrap selection fixtures still use `FixtureTrustVerifier`, which accepts deterministic markers and cannot authorize an actual capsule. The repository now has a separate Ed25519 threshold metadata reference implementation; see [Signed registry metadata and trust root](REGISTRY_TRUST.md). Binding verified bootstrap targets to downloaded capsule digests and a write path remains a future security gate.
 
 ## Run
 

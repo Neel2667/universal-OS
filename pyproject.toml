@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "universalos-portable-core"
+version = "0.1.0.dev0"
+description = "Host-side reference contracts for the UniversalOS portable core"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "cryptography>=46.0.0,<47.0.0"
+]
+
+[tool.setuptools]
+package-dir = {"" = "core"}
+
+[tool.setuptools.packages.find]
+where = ["core"]
