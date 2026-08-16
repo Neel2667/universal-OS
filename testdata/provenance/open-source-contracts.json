@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "component_id": "uos.source.universal-contracts",
+  "kind": "source",
+  "version": "0.1.0-dev",
+  "origin": {"url": "https://github.com/Neel2667/universal-OS", "revision": "arena-development"},
+  "license": {"spdx": "LicenseRef-Pending-Project-License", "notice_required": false},
+  "redistribution": "pending-review",
+  "integrity": {"sha256": "1111111111111111111111111111111111111111111111111111111111111111"},
+  "targets": {"architectures": ["arm64", "armv7", "x86_64", "riscv64"]},
+  "review": {"state": "unreviewed", "evidence": "Initial project-owned source inventory record; project license decision remains open."}
+}

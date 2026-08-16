@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universalos.dev/specs/provenance/component-v1.json",
+  "title": "UniversalOS Component Provenance v1",
+  "description": "A non-secret inventory record for source, generated code, redistributable binary, or restricted firmware input. It records legal/integrity decisions; it never carries the component binary or private extraction data.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "component_id", "kind", "version", "origin", "license", "redistribution", "integrity", "review"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "component_id": {"type": "string", "pattern": "^uos\\.[a-z0-9][a-z0-9._-]*$"},
+    "kind": {"enum": ["source", "generated", "binary", "firmware", "model"]},
+    "version": {"type": "string", "minLength": 1, "maxLength": 160},
+    "origin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "revision"],
+      "properties": {
+        "url": {"type": "string", "format": "uri"},
+        "revision": {"type": "string", "minLength": 1, "maxLength": 200}
+      }
+    },
+    "license": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["spdx", "notice_required"],
+      "properties": {
+        "spdx": {"type": "string", "minLength": 1, "maxLength": 120},
+        "notice_required": {"type": "boolean"}
+      }
+    },
+    "redistribution": {"enum": ["allowed", "user-extraction-only", "not-allowed", "pending-review"]},
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sha256"],
+      "properties": {
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "targets": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "architectures": {"type": "array", "uniqueItems": true, "items": {"enum": ["arm64", "armv7", "x86_64", "riscv64"]}},
+        "profile_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}}
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "evidence"],
+      "properties": {
+        "state": {"enum": ["unreviewed", "approved", "rejected", "needs-legal-review"]},
+        "evidence": {"type": "string", "minLength": 1, "maxLength": 500}
+      }
+    }
+  }
+}

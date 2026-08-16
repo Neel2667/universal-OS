@@ -35,6 +35,8 @@ UniversalOS aims to make supported mobile hardware useful for longer through **o
 - [Native local service protocol](docs/NATIVE_SERVICE_PROTOCOL.md)
 - [Linux local IPC transport reference](docs/LOCAL_IPC_TRANSPORT.md)
 - [Risk register](docs/RISK_REGISTER.md)
+- [Initial threat model](docs/THREAT_MODEL.md)
+- [Provenance policy](docs/PROVENANCE_POLICY.md)
 - [Decision log](docs/DECISIONS.md)
 - [Definition of done](docs/DEFINITION_OF_DONE.md)
 - [Initial GitHub backlog](docs/INITIAL_BACKLOG.md)

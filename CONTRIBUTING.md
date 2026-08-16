@@ -7,7 +7,8 @@ Thank you for helping build UniversalOS. This project is in its architecture pha
 1. Search existing [issues](https://github.com/Neel2667/universal-OS/issues) and read the project plan.
 2. Use an issue to discuss any non-trivial change before investing substantial implementation time.
 3. Never upload vendor firmware, proprietary binaries, private signing keys, credentials, or personal device data unless the project has a documented legal and secure process that permits it.
-4. Do not claim a device/feature is supported without the evidence required by `docs/DEFINITION_OF_DONE.md`.
+4. Record source, binary, firmware, and model inputs according to [the provenance policy](docs/PROVENANCE_POLICY.md) before distribution work.
+5. Do not claim a device/feature is supported without the evidence required by `docs/DEFINITION_OF_DONE.md`.
 
 ## Workflow
 
