@@ -33,6 +33,8 @@ The cloud distributes candidates; the local device verifier makes the security a
 | Main OS language | Rust-first trusted core. Python is the executable reference model/test oracle only. C/C++ is isolated to unavoidable kernel/vendor/graphics interfaces. |
 | System/image base | Custom Yocto/OpenEmbedded Discovery Base image with Linux hardware adapters, systemd supervision, immutable root direction, local peer-authenticated IPC. See ADR-002. |
 | First-install connectivity | USB Universal Installer first; phone does not need Wi-Fi/cellular before boot. Offline transfer is required; Wi-Fi becomes optional after compatible local support exists. |
+| Privacy/account | Account-free basic operation; diagnostics/crash upload are opt-in; no hidden telemetry. See ADR-005. |
+| Device lifecycle | Profiled/lab/verified/maintained/retired tiers require evidence; see ADR-007. |
 | AI | Explicitly excluded from current core scope. Do not reintroduce it unless the owner reopens the decision. |
 | Device claims | No phone is supported yet. No physical device has been flashed, rebooted, or modified by this project. |
 
@@ -45,10 +47,14 @@ The cloud distributes candidates; the local device verifier makes the security a
 5. [Bootstrap-to-full-system flow](BOOTSTRAP_DISCOVERY_FLOW.md)
 6. [Connectivity bootstrap](CONNECTIVITY_BOOTSTRAP.md)
 7. [Universal Installer rehearsal](INSTALLER_REHEARSAL.md)
-8. [Managed workstreams](WORKSTREAMS.md)
-9. [Project plan](PROJECT_PLAN.md)
-10. [Risk register](RISK_REGISTER.md) and [threat model](THREAT_MODEL.md)
-11. [Definition of done](DEFINITION_OF_DONE.md)
+8. [Product charter](PRODUCT_CHARTER.md)
+9. [Privacy/account decision](adr/ADR-005-privacy-diagnostics-account-policy.md)
+10. [Device lifecycle decision](adr/ADR-007-device-lifecycle-policy.md)
+11. [Experience journeys](UX_JOURNEYS.md) and [performance/accessibility budgets](PERFORMANCE_ACCESSIBILITY.md)
+12. [Managed workstreams](WORKSTREAMS.md)
+13. [Project plan](PROJECT_PLAN.md)
+14. [Risk register](RISK_REGISTER.md) and [threat model](THREAT_MODEL.md)
+15. [Definition of done](DEFINITION_OF_DONE.md)
 
 ## What exists in code today
 
