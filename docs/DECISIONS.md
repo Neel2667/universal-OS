@@ -18,7 +18,7 @@ Architecture decisions are immutable once accepted; a later ADR supersedes rathe
 | ADR-003 | Select the application compatibility strategy | Accepted — see `adr/ADR-003-application-runtime.md` | application-runtime work |
 | ADR-004 | Adopt signed update metadata and key roles | Proposed | update-agent implementation |
 | ADR-005 | Define privacy, telemetry, and account policy | Accepted — see `adr/ADR-005-privacy-diagnostics-account-policy.md` | any cloud-connected preview |
-| ADR-006 | Approve design-system direction from Stitch concepts | Proposed | UI-shell implementation |
+| ADR-006 | Approve design-system direction from Stitch concepts | Accepted — see `adr/ADR-006-stitch-design-integration.md` | UI-shell implementation |
 | ADR-007 | Define supported-device admission and retirement policy | Accepted — see `adr/ADR-007-device-lifecycle-policy.md` | second device port |
 
 ## ADR template
