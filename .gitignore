@@ -28,3 +28,6 @@ keys/
 .DS_Store
 __pycache__/
 *.py[cod]
+
+# Python packaging metadata
+*.egg-info/
