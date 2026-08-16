@@ -53,4 +53,4 @@ No request payload may contain a bearer token, private key, device serial, IMEI,
 
 ## Boundary
 
-This is still host-side reference code. Native IPC transport, service supervision, Linux MAC policy, verified-boot measurements, and a real system UI are next implementation areas. Nothing here connects to or changes a physical phone.
+A host-side Linux Unix-socket transport using `SO_PEERCRED` is now provided in [Linux local IPC transport reference](LOCAL_IPC_TRANSPORT.md). Service supervision, Linux MAC policy, verified-boot measurements, and a real system UI remain required. Nothing here connects to or changes a physical phone.
