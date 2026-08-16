@@ -153,7 +153,7 @@ class PackageManifest:
         version = _string(raw["version"], "package.version")
         parse_version(version)
         kind = _string(raw["kind"], "package.kind")
-        if kind not in {"core", "device-support"}:
+        if kind not in {"core", "device-support", "app"}:
             raise ContractError(f"invalid package kind: {kind}")
 
         provides = _mapping(raw["provides"], "package.provides")

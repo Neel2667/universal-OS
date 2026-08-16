@@ -29,6 +29,7 @@ UniversalOS aims to make supported mobile hardware useful for longer through **o
 - [Product charter](docs/PRODUCT_CHARTER.md)
 - [End-to-end project plan](docs/PROJECT_PLAN.md)
 - [Experience journeys](docs/UX_JOURNEYS.md)
+- [Application platform](docs/APP_PLATFORM.md)
 - [Performance and accessibility budgets](docs/PERFORMANCE_ACCESSIBILITY.md)
 - [System architecture](docs/ARCHITECTURE.md)
 - [Accepted system/hardware base decision](docs/adr/ADR-002-system-and-hardware-base.md)
