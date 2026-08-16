@@ -18,6 +18,9 @@ UniversalOS aims to make supported mobile hardware useful for longer through **o
 
 ## Start here
 
+**Taking over in a new session?** Read the [project handoff](docs/PROJECT_HANDOFF.md) first.
+
+- [Project handoff](docs/PROJECT_HANDOFF.md)
 - [End-to-end project plan](docs/PROJECT_PLAN.md)
 - [System architecture](docs/ARCHITECTURE.md)
 - [Accepted system/hardware base decision](docs/adr/ADR-002-system-and-hardware-base.md)
