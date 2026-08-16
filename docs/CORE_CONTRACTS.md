@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This repository now contains the first executable UniversalOS foundation: **portable hardware-profile and package-manifest contracts plus a profile-driven compatibility resolver**. It proves that the core can choose packages through declarative data instead of device-name conditionals.
+This repository now contains the first executable UniversalOS foundation: **portable hardware-profile and package-manifest contracts plus a profile-driven compatibility resolver**. It proves that the core can choose packages through declarative data instead of device-name conditionals. It implements only the signed-registry/exact-match portion of the broader [Discovery Base → full-system delivery flow](BOOTSTRAP_DISCOVERY_FLOW.md).
 
 This is a **host-side reference prototype**, not a bootable operating system, kernel, firmware flasher, driver loader, or production updater. It never connects to a phone, downloads a package, writes storage, or changes a bootloader.
 

@@ -21,6 +21,7 @@ UniversalOS aims to make supported mobile hardware useful for longer through **o
 - [End-to-end project plan](docs/PROJECT_PLAN.md)
 - [System architecture](docs/ARCHITECTURE.md)
 - [Universality model](docs/UNIVERSALITY_MODEL.md)
+- [Bootstrap-to-full-system flow](docs/BOOTSTRAP_DISCOVERY_FLOW.md)
 - [Portable core contracts](docs/CORE_CONTRACTS.md)
 - [Risk register](docs/RISK_REGISTER.md)
 - [Decision log](docs/DECISIONS.md)

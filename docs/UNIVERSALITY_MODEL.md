@@ -38,6 +38,12 @@ The objective is therefore: **universal core, minimal device-specific enablement
 
 Only layer 1 must necessarily start with device-specific knowledge. Layers 2–4 are the UniversalOS product.
 
+## The product installation journey
+
+The desired user flow is: **Discovery Base boots → hardware is identified locally → exact signed support set is selected → full UniversalOS is staged safely → ongoing profile-aware updates continue.**
+
+The one technical prerequisite is that a small target-compatible Bootstrap Capsule must be present before Discovery Base can begin. It is a compatibility adapter, not a separate per-device OS. See [Bootstrap, discovery, and full-system delivery flow](BOOTSTRAP_DISCOVERY_FLOW.md) for the complete state sequence and update model.
+
 ## Boot and adaptation sequence
 
 ```text

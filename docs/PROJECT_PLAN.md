@@ -7,12 +7,12 @@
 **Version 0.1 proof:** on one selected unlockable target (or a faithful emulator before hardware), an experienced developer can:
 
 1. verify prerequisites and unlock status;
-2. install a signed bootstrap image through a documented recovery path;
-3. boot a minimal UniversalOS environment;
+2. use a Universal Installer/recovery path to select the smallest signed Bootstrap Capsule from preliminary non-personal boot facts;
+3. boot the shared UniversalOS Discovery Base;
 4. identify the exact hardware profile locally;
-5. fetch only a signed, compatible system/device-support release;
-6. apply it atomically to an inactive slot;
-7. reboot successfully; and
+5. fetch only signed, compatible full-core and device-support candidates;
+6. stage and apply the complete matched system atomically to an inactive/transactional target;
+7. reboot successfully into the shared UniversalOS core; and
 8. recover automatically or manually from a deliberately bad update.
 
 This proof is more important than a polished launcher. It establishes the product's hardest promise: safe, durable support while demonstrating that the core is independent of a specific handset.
