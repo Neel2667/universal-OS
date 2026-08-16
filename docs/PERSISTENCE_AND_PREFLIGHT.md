@@ -54,4 +54,4 @@ Authenticating the health service against measured/verified boot state is still 
 
 ## Deliberate boundary
 
-No component in this document writes a phone partition or claims device recovery. The next gate is an architecture-independent service boundary around these policies, followed by a device-specific recovery proof on a disposable laboratory profile.
+No component in this document writes a phone partition or claims device recovery. The policies are now composed by the host-side [UniversalOS system-service boundary](SYSTEM_SERVICE_BOUNDARY.md). The next gate is reviewed native on-device protocols followed by a device-specific recovery proof on a disposable laboratory profile.
