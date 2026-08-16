@@ -74,7 +74,7 @@ capability-gated local service protocol
 Linux Unix-domain peer-authenticated IPC reference
 USB/offline chunked resumable verified transfer model
 end-to-end installer rehearsal chaining signed bootstrap/profile/targets/transfer
-mirror/offline bundle, fault matrix, SBOM, device-enablement, health-attestation, audit, release-gate, bootstrap-adapter, and recovery-proof reference tooling
+mirror/offline bundle, fault matrix, SBOM, device-enablement, health-attestation, audit, release-gate, bootstrap-adapter, recovery-proof, package-admission, storage-layout, device-matrix, and reproducible-build reference tooling
 source/firmware/model provenance metadata validation
 ```
 
