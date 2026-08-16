@@ -114,4 +114,4 @@ The current `core/universal_core` implementation covers only stages **[5]–[6]*
 - real cryptographic repository metadata;
 - a downloader, flasher, or update writer.
 
-The next implementation slice adds a versioned Bootstrap Capsule manifest and a simulated Universal Installer discovery input. Both will remain host-side/synthetic until the trust and recovery gates are complete.
+The versioned Bootstrap Capsule manifest and simulated Universal Installer discovery input are now implemented as a host-side/synthetic prototype. See [Universal Installer and Bootstrap Capsule contracts](BOOTSTRAP_CONTRACTS.md). They will remain host-side/synthetic until the trust and recovery gates are complete.

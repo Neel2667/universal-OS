@@ -16,7 +16,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "core"))
 
+from universal_core.bootstrap import BootstrapCapsule, select_bootstrap  # noqa: E402
 from universal_core.contracts import HardwareProfile, PackageManifest  # noqa: E402
+from universal_core.discovery import DiscoveryRecord  # noqa: E402
 from universal_core.resolver import resolve  # noqa: E402
 from universal_core.trust import FixtureTrustVerifier  # noqa: E402
 
@@ -29,10 +31,15 @@ def load_json(path: Path) -> dict:
 
 
 def main() -> int:
+    records = [DiscoveryRecord.from_dict(load_json(path)) for path in sorted((ROOT / "testdata/discovery").glob("*.json"))]
+    capsules = [BootstrapCapsule.from_dict(load_json(path)) for path in sorted((ROOT / "testdata/bootstrap_capsules").glob("*.json"))]
     profiles = [HardwareProfile.from_dict(load_json(path)) for path in sorted((ROOT / "testdata/profiles").glob("*.json"))]
     manifests = [PackageManifest.from_dict(load_json(path)) for path in sorted((ROOT / "testdata/packages").glob("*.json"))]
     verifier = FixtureTrustVerifier({"fixture-root"})
 
+    for record in records:
+        plan = select_bootstrap(record, capsules, verifier, now=FIXTURE_TIME)
+        print(f"{record.record_id}: bootstrap={plan.capsule.capsule_id}@{plan.capsule.version}; rejected={len(plan.rejections)}")
     for profile in profiles:
         plan = resolve(profile, manifests, verifier, now=FIXTURE_TIME)
         support = ", ".join(item.component for item in plan.device_support)

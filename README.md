@@ -22,6 +22,7 @@ UniversalOS aims to make supported mobile hardware useful for longer through **o
 - [System architecture](docs/ARCHITECTURE.md)
 - [Universality model](docs/UNIVERSALITY_MODEL.md)
 - [Bootstrap-to-full-system flow](docs/BOOTSTRAP_DISCOVERY_FLOW.md)
+- [Universal Installer and Bootstrap Capsule contracts](docs/BOOTSTRAP_CONTRACTS.md)
 - [Portable core contracts](docs/CORE_CONTRACTS.md)
 - [Risk register](docs/RISK_REGISTER.md)
 - [Decision log](docs/DECISIONS.md)
@@ -39,7 +40,7 @@ UniversalOS will first validate **one portable core** against an emulator and a 
 
 ## Portable core prototype
 
-The first executable, device-independent foundation is available in `core/universal_core`. It validates portable hardware profiles and package manifests, then resolves compatible core/device-support fixtures without any phone model logic. It is a **host-side prototype only** and cannot flash or boot a phone.
+The device-independent foundation is available in `core/universal_core`. It first selects a minimal Bootstrap Capsule from a synthetic non-personal discovery record, then resolves portable hardware profiles and package manifests without any phone model logic. It is a **host-side prototype only** and cannot flash or boot a phone.
 
 ```sh
 python3 tools/validate_contracts.py

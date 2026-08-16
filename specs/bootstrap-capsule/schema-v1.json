@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universalos.dev/specs/bootstrap-capsule/schema-v1.json",
+  "title": "UniversalOS Bootstrap Capsule Manifest v1",
+  "description": "Signed metadata for the minimal board-compatible capsule required to boot UniversalOS Discovery Base. A capsule is a compatibility adapter, not a separate UniversalOS product build.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "capsule_id", "version", "compatibility", "payload", "recovery", "security"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "capsule_id": {"type": "string", "pattern": "^uos\\.bootstrap\\.[a-z0-9][a-z0-9._-]*$"},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["architectures", "board_families", "soc_families", "partition_models", "transports"],
+      "properties": {
+        "architectures": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["arm64", "armv7", "x86_64", "riscv64"]}},
+        "board_families": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"}},
+        "soc_families": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"}},
+        "partition_models": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["ab", "transactional", "single-slot"]}},
+        "transports": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["fastboot", "recovery", "adb"]}}
+      }
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sha256", "bytes", "install_mode"],
+      "properties": {
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "install_mode": {"const": "bootstrap-capsule"}
+      }
+    },
+    "recovery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["offline_recovery", "log_export"],
+      "properties": {
+        "offline_recovery": {"const": true},
+        "log_export": {"type": "boolean"}
+      }
+    },
+    "security": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["signer", "signature", "expires"],
+      "properties": {
+        "signer": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"},
+        "signature": {"type": "string", "minLength": 1},
+        "expires": {"type": "string", "format": "date-time"}
+      }
+    }
+  }
+}

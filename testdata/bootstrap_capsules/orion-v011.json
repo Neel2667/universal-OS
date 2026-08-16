@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "capsule_id": "uos.bootstrap.synthetic-orion",
+  "version": "0.1.1",
+  "compatibility": {"architectures": ["arm64"], "board_families": ["synthetic-orion"], "soc_families": ["synthetic-q1"], "partition_models": ["ab"], "transports": ["fastboot"]},
+  "payload": {"sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "bytes": 1025, "install_mode": "bootstrap-capsule"},
+  "recovery": {"offline_recovery": true, "log_export": true},
+  "security": {"signer": "fixture-root", "signature": "fixture:fixture-root:trusted", "expires": "2030-01-01T00:00:00Z"}
+}

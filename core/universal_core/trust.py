@@ -11,12 +11,19 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from typing import Protocol
 
-from .contracts import PackageManifest
 from .errors import TrustError
 
 
+class TrustSubject(Protocol):
+    """Minimal signed-metadata fields shared by package and bootstrap manifests."""
+
+    signer: str
+    signature: str
+    expires: datetime
+
+
 class TrustVerifier(Protocol):
-    def verify(self, manifest: PackageManifest, now: datetime) -> None:
+    def verify(self, manifest: TrustSubject, now: datetime) -> None:
         """Raise TrustError unless trusted metadata authorizes this manifest."""
 
 
@@ -31,7 +38,7 @@ class FixtureTrustVerifier:
     def __init__(self, trusted_signers: set[str]) -> None:
         self._trusted_signers = frozenset(trusted_signers)
 
-    def verify(self, manifest: PackageManifest, now: datetime) -> None:
+    def verify(self, manifest: TrustSubject, now: datetime) -> None:
         if now.tzinfo is None:
             raise TrustError("verification time must include a timezone")
         if manifest.signer not in self._trusted_signers:
