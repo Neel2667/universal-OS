@@ -25,6 +25,7 @@ UniversalOS aims to make supported mobile hardware useful for longer through **o
 - [Universal Installer and Bootstrap Capsule contracts](docs/BOOTSTRAP_CONTRACTS.md)
 - [Portable core contracts](docs/CORE_CONTRACTS.md)
 - [Signed registry metadata and trust root](docs/REGISTRY_TRUST.md)
+- [Verified target binding and safe installation model](docs/SAFE_INSTALLATION.md)
 - [Risk register](docs/RISK_REGISTER.md)
 - [Decision log](docs/DECISIONS.md)
 - [Definition of done](docs/DEFINITION_OF_DONE.md)

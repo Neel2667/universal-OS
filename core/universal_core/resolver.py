@@ -51,6 +51,61 @@ def _newest(packages: Sequence[PackageManifest]) -> PackageManifest:
     return max(packages, key=lambda item: parse_version(item.version))
 
 
+def resolve_verified_manifests(profile: HardwareProfile, manifests: Iterable[PackageManifest]) -> ResolutionPlan:
+    """Resolve manifests only after a verified registry/artifact pipeline accepted them.
+
+    Unlike :func:`resolve`, this function does not call a manifest trust verifier.
+    Its caller must supply manifests obtained through `verify_target_artifact` or
+    an equivalent reviewed verified-target binding.
+    """
+    accepted: list[PackageManifest] = []
+    rejections: list[Rejection] = []
+    for manifest in manifests:
+        mismatch = _matches(profile, manifest)
+        if mismatch:
+            rejections.append(Rejection(manifest.package_id, mismatch))
+            continue
+        accepted.append(manifest)
+    return _resolve_accepted(profile, accepted, rejections)
+
+
+def _resolve_accepted(
+    profile: HardwareProfile,
+    accepted: Iterable[PackageManifest],
+    rejections: Iterable[Rejection],
+) -> ResolutionPlan:
+    accepted = list(accepted)
+    rejections = list(rejections)
+    cores = [item for item in accepted if item.kind == "core" and item.component == "core"]
+    if not cores:
+        raise ResolutionError(f"no trusted compatible core package for profile {profile.profile_id}")
+    core = _newest(cores)
+
+    support_by_component: dict[str, list[PackageManifest]] = {}
+    for item in accepted:
+        if item.kind == "device-support":
+            support_by_component.setdefault(item.component, []).append(item)
+
+    selected_support: list[PackageManifest] = []
+    missing = []
+    for component in profile.required_components:
+        candidates = support_by_component.get(component, [])
+        if not candidates:
+            missing.append(component)
+        else:
+            selected_support.append(_newest(candidates))
+    if missing:
+        missing_text = ", ".join(sorted(missing))
+        raise ResolutionError(f"missing trusted compatible device-support components: {missing_text}")
+
+    return ResolutionPlan(
+        profile_id=profile.profile_id,
+        core=core,
+        device_support=tuple(sorted(selected_support, key=lambda item: item.component)),
+        rejections=tuple(rejections),
+    )
+
+
 def resolve(
     profile: HardwareProfile,
     manifests: Iterable[PackageManifest],
@@ -82,31 +137,4 @@ def resolve(
             continue
         accepted.append(manifest)
 
-    cores = [item for item in accepted if item.kind == "core" and item.component == "core"]
-    if not cores:
-        raise ResolutionError(f"no trusted compatible core package for profile {profile.profile_id}")
-    core = _newest(cores)
-
-    support_by_component: dict[str, list[PackageManifest]] = {}
-    for item in accepted:
-        if item.kind == "device-support":
-            support_by_component.setdefault(item.component, []).append(item)
-
-    selected_support: list[PackageManifest] = []
-    missing = []
-    for component in profile.required_components:
-        candidates = support_by_component.get(component, [])
-        if not candidates:
-            missing.append(component)
-        else:
-            selected_support.append(_newest(candidates))
-    if missing:
-        missing_text = ", ".join(sorted(missing))
-        raise ResolutionError(f"missing trusted compatible device-support components: {missing_text}")
-
-    return ResolutionPlan(
-        profile_id=profile.profile_id,
-        core=core,
-        device_support=tuple(sorted(selected_support, key=lambda item: item.component)),
-        rejections=tuple(rejections),
-    )
+    return _resolve_accepted(profile, accepted, rejections)

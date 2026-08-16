@@ -60,8 +60,7 @@ A missing core or required device component is a hard failure. Incompatible or u
 
 ## Next implementation gates
 
-1. Integrate verified signed repository targets with package-manifest and artifact-digest verification; see [Signed registry metadata and trust root](REGISTRY_TRUST.md).
-2. Add profile signature/provenance validation and versioned schema migration rules.
-3. Add an update-state journal plus a staging/rollback simulator.
-4. Build an architecture-independent system-service interface around this resolver.
-5. Only after recovery/trust gates pass, feed a real lab device profile into the process.
+1. Add profile signature/provenance validation and versioned schema migration rules.
+2. Replace the in-memory [safe installation model](SAFE_INSTALLATION.md) with a reviewed persistent journal, staged store, power/space preflight, and recovery integration.
+3. Build an architecture-independent system-service interface around this resolver.
+4. Only after recovery/trust gates pass, feed a real lab device profile into the process.

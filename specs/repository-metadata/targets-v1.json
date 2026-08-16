@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universalos.dev/specs/repository-metadata/targets-v1.json",
+  "title": "UniversalOS targets role signed body v1",
+  "description": "The signed body of a role=targets envelope. It binds exact package-manifest bytes and payload bytes to a package identifier before compatibility resolution.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["targets"],
+  "properties": {
+    "targets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["target_id", "package_id", "manifest", "payload"],
+        "properties": {
+          "target_id": {"type": "string", "minLength": 1, "maxLength": 200},
+          "package_id": {"type": "string", "pattern": "^uos\\.[a-z0-9][a-z0-9._-]*$"},
+          "manifest": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["sha256", "bytes"],
+            "properties": {
+              "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+              "bytes": {"type": "integer", "minimum": 1}
+            }
+          },
+          "payload": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["sha256", "bytes"],
+            "properties": {
+              "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+              "bytes": {"type": "integer", "minimum": 0}
+            }
+          }
+        }
+      }
+    }
+  }
+}

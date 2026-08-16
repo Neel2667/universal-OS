@@ -49,7 +49,7 @@ The candidate root version must be greater than the current root version.
 
 ## Explicit limitations and safety rules
 
-- This component verifies metadata envelopes only. It does not yet bind verified registry targets to a downloaded package manifest/payload digest; that is the next integration step.
+- Verified `targets` metadata is now bound to exact package-manifest and payload bytes in [Verified target binding and safe installation model](SAFE_INSTALLATION.md). A downloader/staging store and persistent write path remain future work.
 - It does not manage production private keys. Production keys must be offline/hardware-backed according to a separately reviewed key ceremony; they must never enter Git, CI, test fixtures, logs, or chat.
 - It does not replace a full TUF/Uptane security review. Threshold choice, timestamp/snapshot delegation, mirror behavior, key compromise response, and metadata retention require further design/review.
 - It is host-side reference code and does not touch a phone or network.
