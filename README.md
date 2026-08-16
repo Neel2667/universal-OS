@@ -23,6 +23,7 @@ UniversalOS aims to make supported mobile hardware useful for longer by separati
 - [Risk register](docs/RISK_REGISTER.md)
 - [Decision log](docs/DECISIONS.md)
 - [Definition of done](docs/DEFINITION_OF_DONE.md)
+- [Initial GitHub backlog](docs/INITIAL_BACKLOG.md)
 - [Contribution guide](CONTRIBUTING.md)
 - [Security policy](SECURITY.md)
 
