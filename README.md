@@ -26,6 +26,7 @@ UniversalOS aims to make supported mobile hardware useful for longer through **o
 - [Portable core contracts](docs/CORE_CONTRACTS.md)
 - [Signed registry metadata and trust root](docs/REGISTRY_TRUST.md)
 - [Verified target binding and safe installation model](docs/SAFE_INSTALLATION.md)
+- [Persistent transaction, staging, preflight, and health contracts](docs/PERSISTENCE_AND_PREFLIGHT.md)
 - [Risk register](docs/RISK_REGISTER.md)
 - [Decision log](docs/DECISIONS.md)
 - [Definition of done](docs/DEFINITION_OF_DONE.md)

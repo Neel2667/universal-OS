@@ -61,6 +61,43 @@ class InstallJournal:
         values.update(changes)
         return InstallJournal(**values)  # type: ignore[arg-type]
 
+    def to_dict(self) -> dict[str, object]:
+        """Serialize only non-sensitive transaction state for JournalStore."""
+        return {
+            "profile_id": self.profile_id,
+            "partition_model": self.partition_model,
+            "active_target": self.active_target,
+            "state": self.state.value,
+            "staged_target": self.staged_target,
+            "package_ids": list(self.package_ids),
+            "events": list(self.events),
+        }
+
+    @classmethod
+    def from_dict(cls, raw: dict[str, object]) -> "InstallJournal":
+        expected = {"profile_id", "partition_model", "active_target", "state", "staged_target", "package_ids", "events"}
+        if set(raw) != expected:
+            raise ResolutionError("serialized install journal has unknown or missing fields")
+        try:
+            state = InstallState(raw["state"])
+        except (TypeError, ValueError) as exc:
+            raise ResolutionError("serialized install journal has invalid state") from exc
+        package_ids = raw["package_ids"]
+        events = raw["events"]
+        if not isinstance(package_ids, list) or not all(isinstance(item, str) and item for item in package_ids):
+            raise ResolutionError("serialized install journal has invalid package ids")
+        if not isinstance(events, list) or not all(isinstance(item, str) and item for item in events):
+            raise ResolutionError("serialized install journal has invalid events")
+        profile_id = raw["profile_id"]
+        partition_model = raw["partition_model"]
+        active_target = raw["active_target"]
+        staged_target = raw["staged_target"]
+        if not all(isinstance(item, str) and item for item in (profile_id, partition_model, active_target)):
+            raise ResolutionError("serialized install journal has invalid identity fields")
+        if staged_target is not None and (not isinstance(staged_target, str) or not staged_target):
+            raise ResolutionError("serialized install journal has invalid staged target")
+        return cls(profile_id, partition_model, active_target, state, staged_target, tuple(package_ids), tuple(events))
+
     def metadata_verified(self) -> "InstallJournal":
         return self._transition(InstallState.IDLE, InstallState.METADATA_VERIFIED, "metadata-verified")
 

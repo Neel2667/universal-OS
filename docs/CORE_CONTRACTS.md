@@ -61,6 +61,6 @@ A missing core or required device component is a hard failure. Incompatible or u
 ## Next implementation gates
 
 1. Add profile signature/provenance validation and versioned schema migration rules.
-2. Replace the in-memory [safe installation model](SAFE_INSTALLATION.md) with a reviewed persistent journal, staged store, power/space preflight, and recovery integration.
+2. Replace the host-side [persistent transaction and preflight contracts](PERSISTENCE_AND_PREFLIGHT.md) with reviewed device storage, boot-control, and recovery integration.
 3. Build an architecture-independent system-service interface around this resolver.
 4. Only after recovery/trust gates pass, feed a real lab device profile into the process.

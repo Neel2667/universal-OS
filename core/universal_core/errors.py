@@ -11,3 +11,7 @@ class TrustError(ValueError):
 
 class ResolutionError(RuntimeError):
     """No safe, compatible resolution plan could be created."""
+
+
+class PersistenceError(RuntimeError):
+    """A staged artifact or persistent installation journal failed integrity checks."""

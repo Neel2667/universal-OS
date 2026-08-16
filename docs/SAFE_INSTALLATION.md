@@ -65,4 +65,4 @@ Power interruption or failed health confirmation retains the earlier known-good 
 
 ## Deliberate limits before hardware work
 
-The next implementation must add a reviewed downloader/staging store, persistent crash-safe journal storage, available-space and power preflight, real boot-control integration, device-health attestation, and actual recovery proof. This model does not authorize flashing the Mi A2 or any other phone.
+The host-side reference now includes [persistent transaction, staging, preflight, and health contracts](PERSISTENCE_AND_PREFLIGHT.md). A reviewed downloader, real boot-control integration, health authentication against verified boot, and actual recovery proof are still required. This model does not authorize flashing the Mi A2 or any other phone.
