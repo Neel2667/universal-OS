@@ -26,6 +26,7 @@ UniversalOS aims to make supported mobile hardware useful for longer by separati
 - [Initial GitHub backlog](docs/INITIAL_BACKLOG.md)
 - [Proposed implementation blueprint](docs/IMPLEMENTATION_BLUEPRINT.md)
 - [Reference-device intake checklist](docs/REFERENCE_DEVICE_INTAKE.md)
+- [Mi A2 candidate evaluation](docs/DEVICE_EVALUATIONS/xiaomi-mi-a2-jasmine-sprout.md)
 - [Contribution guide](CONTRIBUTING.md)
 - [Security policy](SECURITY.md)
 

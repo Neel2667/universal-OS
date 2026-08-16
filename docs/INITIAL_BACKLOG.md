@@ -23,6 +23,8 @@ This is a navigation index for the initial, deliberately bounded backlog. **GitH
 | [#7](https://github.com/Neel2667/universal-OS/issues/7) | ADR-005 privacy/diagnostics/account policy | #2, #6 |
 | [#8](https://github.com/Neel2667/universal-OS/issues/8) | ADR-007 device admission/maintenance/retirement policy | #2, #3 |
 
+**Current ADR-001 evidence:** [Xiaomi Mi A2 (`jasmine_sprout`) candidate evaluation](DEVICE_EVALUATIONS/xiaomi-mi-a2-jasmine-sprout.md) and [proposed ADR-001](adr/ADR-001-reference-device.md). The device is research-only until every acceptance gate is met.
+
 ## M1 — Compatibility and trust design
 
 | Issue | Outcome | Primary dependencies |
