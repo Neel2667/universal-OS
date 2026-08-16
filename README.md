@@ -22,6 +22,7 @@ UniversalOS aims to make supported mobile hardware useful for longer through **o
 
 - [Project handoff](docs/PROJECT_HANDOFF.md)
 - [Next five secure delivery tasks](docs/NEXT_FIVE_TASKS.md)
+- [Release readiness gates](docs/RELEASE_READINESS.md)
 - [End-to-end project plan](docs/PROJECT_PLAN.md)
 - [System architecture](docs/ARCHITECTURE.md)
 - [Accepted system/hardware base decision](docs/adr/ADR-002-system-and-hardware-base.md)
