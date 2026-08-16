@@ -47,6 +47,10 @@ A root rotation requires both:
 
 The candidate root version must be greater than the current root version.
 
+## Test repository laboratory
+
+A self-contained disposable test repository is available in [Signed test repository laboratory](TEST_REPOSITORY.md). It proves signed root/targets metadata and payload binding without using a device or production key.
+
 ## Explicit limitations and safety rules
 
 - Verified `targets` metadata is now bound to exact package-manifest and payload bytes in [Verified target binding and safe installation model](SAFE_INSTALLATION.md). A downloader/staging store and persistent write path remain future work.

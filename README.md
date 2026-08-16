@@ -29,6 +29,7 @@ UniversalOS aims to make supported mobile hardware useful for longer through **o
 - [Universal Installer and Bootstrap Capsule contracts](docs/BOOTSTRAP_CONTRACTS.md)
 - [Portable core contracts](docs/CORE_CONTRACTS.md)
 - [Signed registry metadata and trust root](docs/REGISTRY_TRUST.md)
+- [Signed test repository laboratory](docs/TEST_REPOSITORY.md)
 - [Verified target binding and safe installation model](docs/SAFE_INSTALLATION.md)
 - [Persistent transaction, staging, preflight, and health contracts](docs/PERSISTENCE_AND_PREFLIGHT.md)
 - [Universal system-service boundary](docs/SYSTEM_SERVICE_BOUNDARY.md)

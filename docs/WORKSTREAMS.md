@@ -6,7 +6,7 @@ This is the central execution view. Workstreams can progress independently where
 | --- | --- | --- | --- |
 | Product and governance | In progress | charter framework, risks, issues, milestones, contribution/security policy | formal v0.1 charter approval |
 | Universal contracts | Prototype complete | profiles, capsules, package/target metadata, resolver schemas/tests | Rust migration test vectors |
-| Trust and update safety | Prototype complete | Ed25519 threshold metadata, target binding, rollback/preflight/journal model | real test-key repo + QEMU persistence/rollback |
+| Trust and update safety | In progress | Ed25519 threshold metadata, target binding, rollback/preflight/journal model, disposable signed test repository | QEMU persistence/rollback and non-production downloader |
 | Native service boundary | Prototype complete | capability protocol and local Unix peer-authenticated IPC model | native Rust service processes + systemd/MAC policy |
 | Build/Discovery Base | Starting | ADR-002 accepted, build strategy declared | pinned toolchain + QEMU ARM64 image |
 | Device enablement | Research only | Mi A2 lab evaluation and intake/recovery checklist | QEMU gates, then real recovery proof |
