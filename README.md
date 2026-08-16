@@ -27,6 +27,7 @@ UniversalOS aims to make supported mobile hardware useful for longer through **o
 - [Universality model](docs/UNIVERSALITY_MODEL.md)
 - [Bootstrap-to-full-system flow](docs/BOOTSTRAP_DISCOVERY_FLOW.md)
 - [Connectivity bootstrap and installation data flow](docs/CONNECTIVITY_BOOTSTRAP.md)
+- [USB and offline resumable transfer protocol](docs/USB_TRANSFER_PROTOCOL.md)
 - [Universal Installer and Bootstrap Capsule contracts](docs/BOOTSTRAP_CONTRACTS.md)
 - [Portable core contracts](docs/CORE_CONTRACTS.md)
 - [Signed hardware profile catalog](docs/SIGNED_PROFILE_CATALOG.md)

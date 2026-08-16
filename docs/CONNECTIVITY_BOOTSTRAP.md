@@ -63,7 +63,7 @@ This is why UniversalOS uses a small **Bootstrap Capsule**. It is the unavoidabl
 11. First boot health check commits or rolls back
 ```
 
-A computer may improve speed and convenience, but it cannot cause code to run merely by transferring it. The device's embedded trust root and local verifier remain the authority.
+A computer may improve speed and convenience, but it cannot cause code to run merely by transferring it. The device's embedded trust root and local verifier remain the authority. The resumable transport model is specified in [USB and offline resumable transfer protocol](USB_TRANSFER_PROTOCOL.md).
 
 ## Discovery Base networking
 
