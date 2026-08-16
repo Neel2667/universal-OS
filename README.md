@@ -24,6 +24,8 @@ UniversalOS aims to make supported mobile hardware useful for longer by separati
 - [Decision log](docs/DECISIONS.md)
 - [Definition of done](docs/DEFINITION_OF_DONE.md)
 - [Initial GitHub backlog](docs/INITIAL_BACKLOG.md)
+- [Proposed implementation blueprint](docs/IMPLEMENTATION_BLUEPRINT.md)
+- [Reference-device intake checklist](docs/REFERENCE_DEVICE_INTAKE.md)
 - [Contribution guide](CONTRIBUTING.md)
 - [Security policy](SECURITY.md)
 
