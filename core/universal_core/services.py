@@ -62,16 +62,19 @@ class RecoveryReport:
     package_count: int
     events: tuple[str, ...]
 
+    def to_json_dict(self) -> dict[str, object]:
+        return {
+            "profile_id": self.profile_id,
+            "state": self.state,
+            "active_target": self.active_target,
+            "staged_target": self.staged_target,
+            "package_count": self.package_count,
+            "events": list(self.events),
+        }
+
     def to_json(self) -> str:
         return json.dumps(
-            {
-                "profile_id": self.profile_id,
-                "state": self.state,
-                "active_target": self.active_target,
-                "staged_target": self.staged_target,
-                "package_count": self.package_count,
-                "events": list(self.events),
-            },
+            self.to_json_dict(),
             sort_keys=True,
             separators=(",", ":"),
         )

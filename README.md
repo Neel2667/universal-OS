@@ -28,6 +28,7 @@ UniversalOS aims to make supported mobile hardware useful for longer through **o
 - [Verified target binding and safe installation model](docs/SAFE_INSTALLATION.md)
 - [Persistent transaction, staging, preflight, and health contracts](docs/PERSISTENCE_AND_PREFLIGHT.md)
 - [Universal system-service boundary](docs/SYSTEM_SERVICE_BOUNDARY.md)
+- [Native local service protocol](docs/NATIVE_SERVICE_PROTOCOL.md)
 - [Risk register](docs/RISK_REGISTER.md)
 - [Decision log](docs/DECISIONS.md)
 - [Definition of done](docs/DEFINITION_OF_DONE.md)

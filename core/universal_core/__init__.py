@@ -11,6 +11,7 @@ from .errors import ContractError, PersistenceError, ResolutionError, TrustError
 from .health import HealthPolicy, HealthReport, health_is_confirmed
 from .install import InstallJournal, InstallState
 from .preflight import DeviceConditions, PreflightPolicy, evaluate_preflight
+from .protocol import CallerContext, LocalServiceGateway, ServiceRequest, ServiceResponse
 from .registry import MetadataState, SignedMetadata, TrustRoot, rotate_root, verify_and_accept, verify_metadata
 from .resolver import ResolutionPlan, resolve, resolve_verified_manifests
 from .services import DeviceStatus, RecoveryReport, StagedUpdate, UniversalSystemServices, UpdateBlockedError
@@ -18,6 +19,7 @@ from .trust import FixtureTrustVerifier
 
 __all__ = [
     "BootstrapPlan",
+    "CallerContext",
     "ContractError",
     "DeviceConditions",
     "DeviceStatus",
@@ -27,12 +29,15 @@ __all__ = [
     "InstallState",
     "DiscoveryRecord",
     "FixtureTrustVerifier",
+    "LocalServiceGateway",
     "MetadataState",
     "PersistenceError",
     "PreflightPolicy",
     "ResolutionError",
     "RecoveryReport",
     "ResolutionPlan",
+    "ServiceRequest",
+    "ServiceResponse",
     "StagedUpdate",
     "SignedMetadata",
     "TrustRoot",

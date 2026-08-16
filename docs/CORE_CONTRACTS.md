@@ -62,5 +62,5 @@ A missing core or required device component is a hard failure. Incompatible or u
 
 1. Add profile signature/provenance validation and versioned schema migration rules.
 2. Replace the host-side [persistent transaction and preflight contracts](PERSISTENCE_AND_PREFLIGHT.md) with reviewed device storage, boot-control, and recovery integration.
-3. Replace the host-side [system-service boundary](SYSTEM_SERVICE_BOUNDARY.md) with reviewed native on-device protocols and authenticated service implementations.
+3. Replace the host-side [native service protocol](NATIVE_SERVICE_PROTOCOL.md) with reviewed native IPC transport, authenticated service supervision, and verified-boot-bound identities.
 4. Only after recovery/trust gates pass, feed a real lab device profile into the process.

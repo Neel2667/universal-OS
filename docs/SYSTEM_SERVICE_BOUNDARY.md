@@ -42,4 +42,4 @@ The service is deliberately unaware of a phone name. Device packages provide a p
 
 This is not an IPC daemon, boot service, device driver, USB installer, or physical recovery implementation. It is the portable policy boundary that those later platform components must implement. It does not communicate with the Mi A2 or any other device.
 
-The next phase is to specify native on-device service protocols and then create a disposable, recovery-proven lab adapter. No physical installation is authorized merely because this host-side API exists.
+The native local request/response/capability contract is now specified in [Native local service protocol](NATIVE_SERVICE_PROTOCOL.md). Native IPC transport, platform authentication, and a disposable recovery-proven lab adapter remain required. No physical installation is authorized merely because this host-side API exists.

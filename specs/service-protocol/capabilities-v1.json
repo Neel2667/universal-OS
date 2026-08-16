@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universalos.dev/specs/service-protocol/capabilities-v1.json",
+  "title": "UniversalOS local service capability names v1",
+  "description": "Declared capability vocabulary. Native enforcement is outside this schema and must be bound to authenticated local peer identity and verified-boot policy.",
+  "type": "array",
+  "uniqueItems": true,
+  "items": {
+    "enum": [
+      "uos.device.read",
+      "uos.update.read",
+      "uos.update.request-first-boot",
+      "uos.health.report",
+      "uos.recovery.read"
+    ]
+  }
+}
