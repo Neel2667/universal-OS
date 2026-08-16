@@ -30,6 +30,7 @@ UniversalOS aims to make supported mobile hardware useful for longer through **o
 - [Universal system-service boundary](docs/SYSTEM_SERVICE_BOUNDARY.md)
 - [Native local service protocol](docs/NATIVE_SERVICE_PROTOCOL.md)
 - [Linux local IPC transport reference](docs/LOCAL_IPC_TRANSPORT.md)
+- [Local Intelligence architecture](docs/LOCAL_AI_ARCHITECTURE.md)
 - [Risk register](docs/RISK_REGISTER.md)
 - [Decision log](docs/DECISIONS.md)
 - [Definition of done](docs/DEFINITION_OF_DONE.md)
