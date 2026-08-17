@@ -42,7 +42,7 @@ native/
     uos-ipc/
 ```
 
-This structure is intentionally not committed until the exact Yocto release and Rust toolchain can be pinned and built in a clean environment. An untested build layer is worse than no build layer.
+The initial dependency-free Rust workspace scaffold is committed under `native/`, but is uncompiled in the current Arena host until the exact toolchain can be provisioned. Yocto metadata remains deferred until a clean environment can pin and build it.
 
 ## Image boundaries
 

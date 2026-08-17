@@ -75,6 +75,10 @@ UniversalOS aims to make supported mobile hardware useful for longer through **o
 
 UniversalOS will first validate **one portable core** against an emulator and a community-friendly, bootloader-unlockable Android-family lab device, with a developer-only installation flow. The initial release validates the reusable boot, recovery, update, profile, and compatibility contracts—not a device-specific product fork. Broad device support, a consumer app ecosystem, cellular certification, and iPhone support are explicitly out of scope until the reference implementation has passed its gates.
 
+## Native Discovery Base scaffold
+
+The initial Rust workspace lives in [`native/`](native/README.md). It is waiting for the provisioned Rust/Yocto/QEMU environment before its first compilation.
+
 ## Portable core prototype
 
 The device-independent foundation is available in `core/universal_core`. It first selects a minimal Bootstrap Capsule from a synthetic non-personal discovery record, then resolves portable hardware profiles and package manifests without any phone model logic. It is a **host-side prototype only** and cannot flash or boot a phone.

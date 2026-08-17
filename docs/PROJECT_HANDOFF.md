@@ -98,7 +98,7 @@ Do not design a network-only first boot. The selected local Bootstrap Capsule su
 ## Current blockers
 
 ```text
-Rust/Cargo/rustfmt/clippy unavailable on Arena build host
+Rust/Cargo/rustfmt/clippy unavailable on Arena build host; dependency-free native Rust workspace scaffold is present but uncompiled
 BitBake/Yocto unavailable on Arena build host
 QEMU ARM64 unavailable on Arena build host
 External Rust/Debian toolchain endpoints were unavailable from this host

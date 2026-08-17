@@ -1,0 +1,15 @@
+[workspace]
+members = [
+  "crates/uos-contracts",
+  "crates/uos-discoveryd",
+]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0-dev"
+edition = "2024"
+rust-version = "1.85"
+license = "LicenseRef-Pending-Project-License"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
