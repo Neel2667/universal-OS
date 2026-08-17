@@ -1,0 +1,15 @@
+{
+  "name": "UniversalOS Native Discovery Base",
+  "build": {
+    "dockerfile": "../native/environment/Containerfile",
+    "context": ".."
+  },
+  "workspaceFolder": "/workspace",
+  "remoteUser": "root",
+  "postCreateCommand": "verify-universalos-native-env",
+  "customizations": {
+    "vscode": {
+      "extensions": ["rust-lang.rust-analyzer", "ms-vscode.cpptools"]
+    }
+  }
+}

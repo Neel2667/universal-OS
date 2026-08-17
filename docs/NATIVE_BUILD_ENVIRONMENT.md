@@ -28,6 +28,10 @@ python3 tools/check_native_build_host.py --strict
 
 The checker only reports missing tools. It never installs packages, downloads code, changes PATH, launches QEMU, or contacts a device.
 
+## Option 1 container activation
+
+A Dev Container definition now exists at `.devcontainer/devcontainer.json`. See [Option 1 — Arena native container activation](../native/environment/ARENA_OPTION1.md).
+
 ## Selected provisioning target
 
 The project owner selected **Arena** as the target native build environment. See [Arena native build provisioning request](../native/environment/PROVISIONING.md).
