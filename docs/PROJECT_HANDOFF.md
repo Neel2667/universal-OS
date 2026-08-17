@@ -102,6 +102,7 @@ Rust/Cargo/rustfmt/clippy unavailable on Arena build host
 BitBake/Yocto unavailable on Arena build host
 QEMU ARM64 unavailable on Arena build host
 External Rust/Debian toolchain endpoints were unavailable from this host
+Arena is selected for provisioning; see `native/environment/PROVISIONING.md`
 ```
 
 Run the non-destructive diagnostic:

@@ -1,0 +1,19 @@
+# UniversalOS native Discovery Base build environment (provisioning specification).
+# This file is not built in the current Arena host because a container runtime,
+# Rust toolchain, Yocto/BitBake, QEMU ARM64, and public package endpoints are unavailable.
+# Pin this base image to an immutable digest before production use.
+FROM rust:1.85.0-bookworm
+
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential bc bison cpio diffstat file flex gawk gcc git iproute2 \
+    libegl1-mesa libsdl2-2.0-0 locales lz4 rpcsvc-proto socat texinfo \
+    unzip wget xz-utils zstd python3 python3-git python3-jinja2 python3-pexpect \
+    python3-pip python3-subunit qemu-system-arm qemu-utils chrpath \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN rustup target add aarch64-unknown-linux-gnu aarch64-unknown-none \
+    && rustup component add rustfmt clippy
+
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+WORKDIR /workspace

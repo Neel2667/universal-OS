@@ -28,6 +28,10 @@ python3 tools/check_native_build_host.py --strict
 
 The checker only reports missing tools. It never installs packages, downloads code, changes PATH, launches QEMU, or contacts a device.
 
+## Selected provisioning target
+
+The project owner selected **Arena** as the target native build environment. See [Arena native build provisioning request](../native/environment/PROVISIONING.md).
+
 ## Current Arena host observation
 
 At the time this document was added, the sandbox did not expose `rustc`, Cargo, BitBake, or QEMU ARM64. Direct toolchain/package download endpoints were unavailable from this host. That blocks a truthful native build run here, but it does not alter repository design or the Python reference test suite.
