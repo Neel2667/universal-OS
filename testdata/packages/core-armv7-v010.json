@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "package_id": "uos.core.armv7",
+  "version": "0.1.0",
+  "kind": "core",
+  "provides": {"component": "core"},
+  "compatibility": {"architectures": ["armv7"], "profile_ids": ["*"], "bootstrap_version_range": ">=0.1.0 <0.2.0"},
+  "payload": {"sha256": "2222222222222222222222222222222222222222222222222222222222222222", "bytes": 768, "install_mode": "transactional"},
+  "security": {"signer": "fixture-root", "signature": "fixture:fixture-root:trusted", "expires": "2030-01-01T00:00:00Z"}
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universalos.dev/specs/repository-metadata/root-v1.json",
+  "title": "UniversalOS Trust Root v1 signed body",
+  "description": "The signed body of a role=root repository metadata envelope. It defines Ed25519 public keys and signature thresholds. Private keys must never appear in this file, Git, test fixtures, CI, or logs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["keys", "roles"],
+  "properties": {
+    "keys": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["scheme", "public"],
+        "properties": {
+          "scheme": {"const": "ed25519"},
+          "public": {"type": "string", "contentEncoding": "base64"}
+        }
+      }
+    },
+    "roles": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["key_ids", "threshold"],
+        "properties": {
+          "key_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+          "threshold": {"type": "integer", "minimum": 1}
+        }
+      }
+    }
+  }
+}

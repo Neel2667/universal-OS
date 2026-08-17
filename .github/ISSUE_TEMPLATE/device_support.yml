@@ -1,0 +1,33 @@
+name: Device support request
+description: Propose investigation of a specific device. This is not a promise of support.
+title: "device: "
+labels: ["type: device", "needs-triage"]
+body:
+  - type: textarea
+    id: identity
+    attributes:
+      label: Exact device identity
+      description: Manufacturer, model, codename, regional/hardware revision, SoC, and reliable public references.
+    validations:
+      required: true
+  - type: textarea
+    id: boot
+    attributes:
+      label: Bootloader and recovery evidence
+      description: Documented unlock process, relock behavior, factory restore method, and known risks.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Kernel, firmware, and source provenance
+      description: Link official sources/licenses. Do not upload proprietary firmware or copyrighted blobs.
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Maintenance rationale
+      description: Why is this a sustainable target? Include community, maintainer interest, and critical hardware concerns.
+    validations:
+      required: true

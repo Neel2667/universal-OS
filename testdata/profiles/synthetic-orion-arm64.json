@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "profile_id": "uos.profile.synthetic.orion-arm64-v1",
+  "display_name": "Synthetic Orion ARM64 laboratory profile",
+  "support_tier": "profiled",
+  "architecture": "arm64",
+  "hardware": {"board_family": "synthetic-orion", "soc_family": "synthetic-q1", "revision_range": "a-b"},
+  "boot": {
+    "bootstrap_version": "0.1.0",
+    "kernel_abi": "uos-kabi-orion-1",
+    "partition_model": "ab",
+    "verified_boot": "available",
+    "rollback_protection": "available"
+  },
+  "capabilities": {"display": "working", "input": "working", "storage": "working", "wifi": "working", "cellular": "untested"},
+  "device_support": {"required_components": ["display-service", "input-service"], "provenance_state": "complete"}
+}

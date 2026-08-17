@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "record_id": "uos.discovery.synthetic.orion-unlocked-v1",
+  "architecture": "arm64",
+  "hardware": {"board_family": "synthetic-orion", "soc_family": "synthetic-q1", "revision_class": "a"},
+  "boot": {"bootloader_state": "unlocked", "partition_model": "ab"},
+  "transport": {"protocol": "fastboot"}
+}

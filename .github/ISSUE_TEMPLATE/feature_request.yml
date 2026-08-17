@@ -1,0 +1,33 @@
+name: Feature or proposal
+description: Propose a scoped product, system, device-support, or developer-experience improvement.
+title: "proposal: "
+labels: ["type: proposal", "needs-triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and user value
+      description: What concrete problem does this solve? Who benefits?
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Proposed scope and non-goals
+      description: State what is included and deliberately excluded.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Give observable, testable completion criteria.
+    validations:
+      required: true
+  - type: textarea
+    id: security
+    attributes:
+      label: Security, privacy, compatibility, and license impact
+      description: Note risks or write "none known" with rationale.
+    validations:
+      required: true

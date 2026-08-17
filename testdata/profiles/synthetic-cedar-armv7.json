@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "profile_id": "uos.profile.synthetic.cedar-armv7-v1",
+  "display_name": "Synthetic Cedar ARMv7 laboratory profile",
+  "support_tier": "profiled",
+  "architecture": "armv7",
+  "hardware": {"board_family": "synthetic-cedar", "soc_family": "synthetic-r2", "revision_range": "1"},
+  "boot": {
+    "bootstrap_version": "0.1.0",
+    "kernel_abi": "uos-kabi-cedar-2",
+    "partition_model": "transactional",
+    "verified_boot": "unavailable",
+    "rollback_protection": "unavailable"
+  },
+  "capabilities": {"display": "working", "input": "working", "storage": "working", "wifi": "partial"},
+  "device_support": {"required_components": ["display-service", "input-service"], "provenance_state": "in-review"}
+}

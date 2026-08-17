@@ -1,0 +1,37 @@
+name: Bug report
+description: Report a reproducible defect in a planned or released UniversalOS component.
+title: "bug: "
+labels: ["type: bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not disclose security-sensitive exploit details here. See SECURITY.md instead.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include device/model/revision, build/commit, installation method, and relevant configuration. Redact unique identifiers.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Safe reproduction steps
+      description: Steps, expected result, actual result, and frequency. Do not include destructive/security-sensitive details.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Logs or other evidence
+      description: Redact personal data, tokens, keys, and unique device identifiers.
+    validations:
+      required: true

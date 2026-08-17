@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "package_id": "uos.core.rogue",
+  "version": "9.9.9",
+  "kind": "core",
+  "provides": {"component": "core"},
+  "compatibility": {"architectures": ["arm64"], "profile_ids": ["*"], "bootstrap_version_range": ">=0.1.0 <0.2.0"},
+  "payload": {"sha256": "7777777777777777777777777777777777777777777777777777777777777777", "bytes": 1, "install_mode": "inactive-slot"},
+  "security": {"signer": "rogue-signer", "signature": "fixture:rogue-signer:trusted", "expires": "2020-01-01T00:00:00Z"}
+}

@@ -1,1 +1,96 @@
-# universal-OS
+# UniversalOS
+
+> A long-lived, secure, device-adaptive mobile operating-system research project.
+
+UniversalOS aims to make supported mobile hardware useful for longer through **one portable OS core** with small, signed device-enablement packages. It is **not** an attempt to download arbitrary drivers before a phone can boot: the essential boot chain and a minimal target-compatible bootstrap must exist locally and be cryptographically verified. The system UI, services, update client, app model, and security policy are shared—not forked per phone.
+
+## Project status
+
+**Planning and architecture phase.** No device is supported yet, and this repository does not provide a flashable operating-system image. The first engineering goal is to prove the portable core and device-enablement contracts with a reproducible, recoverable developer boot path on a lab device; that laboratory device does not define a separate product build.
+
+## Principles
+
+- **Secure by design:** verified boot, signed metadata and packages, rollback protection, and a local recovery path.
+- **Long-lived support:** isolate hardware-dependent code from the core user-space system wherever practical.
+- **Explicit compatibility:** support is declared, tested, and versioned per device; it is never assumed from a marketing promise.
+- **User control:** no required account for basic device operation; transparent update and diagnostic controls.
+- **Reproducible engineering:** documented source provenance, build steps, test evidence, and release artifacts.
+
+## Start here
+
+**Taking over in a new session?** Read the [project handoff](docs/PROJECT_HANDOFF.md) first.
+
+- [Project handoff](docs/PROJECT_HANDOFF.md)
+- [Next five secure delivery tasks](docs/NEXT_FIVE_TASKS.md)
+- [Release readiness gates](docs/RELEASE_READINESS.md)
+- [Package admission policy](docs/PACKAGE_ADMISSION_POLICY.md)
+- [Safe storage layout](docs/STORAGE_LAYOUT.md)
+- [Reproducible build and CI runbook](docs/REPRODUCIBLE_BUILD.md)
+- [Product charter](docs/PRODUCT_CHARTER.md)
+- [End-to-end project plan](docs/PROJECT_PLAN.md)
+- [Experience journeys](docs/UX_JOURNEYS.md)
+- [Application platform](docs/APP_PLATFORM.md)
+- [UniversalOS UI foundation](docs/UI_FOUNDATION.md)
+- [Google Stitch workflow](docs/STITCH_WORKFLOW.md)
+- [Google Stitch prompt pack](docs/STITCH_PROMPT_PACK.md)
+- [Static shell prototype](prototype/README.md)
+- [Performance and accessibility budgets](docs/PERFORMANCE_ACCESSIBILITY.md)
+- [System architecture](docs/ARCHITECTURE.md)
+- [Accepted system/hardware base decision](docs/adr/ADR-002-system-and-hardware-base.md)
+- [Discovery Base build strategy](docs/BUILD_STRATEGY.md)
+- [Native build environment](docs/NATIVE_BUILD_ENVIRONMENT.md)
+- [Managed workstreams](docs/WORKSTREAMS.md)
+- [Universality model](docs/UNIVERSALITY_MODEL.md)
+- [Bootstrap-to-full-system flow](docs/BOOTSTRAP_DISCOVERY_FLOW.md)
+- [Signed Bootstrap Capsule catalog](docs/SIGNED_BOOTSTRAP_CATALOG.md)
+- [Bootstrap adapter and recovery proof](docs/BOOTSTRAP_ADAPTER_AND_RECOVERY.md)
+- [Connectivity bootstrap and installation data flow](docs/CONNECTIVITY_BOOTSTRAP.md)
+- [Network provisioning contract](docs/NETWORK_PROVISIONING.md)
+- [USB and offline resumable transfer protocol](docs/USB_TRANSFER_PROTOCOL.md)
+- [Universal Installer end-to-end rehearsal](docs/INSTALLER_REHEARSAL.md)
+- [USB Installer companion](docs/INSTALLER_COMPANION.md)
+- [Universal Installer and Bootstrap Capsule contracts](docs/BOOTSTRAP_CONTRACTS.md)
+- [Portable core contracts](docs/CORE_CONTRACTS.md)
+- [Signed hardware profile catalog](docs/SIGNED_PROFILE_CATALOG.md)
+- [Signed registry metadata and trust root](docs/REGISTRY_TRUST.md)
+- [Signed test repository laboratory](docs/TEST_REPOSITORY.md)
+- [Verified target binding and safe installation model](docs/SAFE_INSTALLATION.md)
+- [Persistent transaction, staging, preflight, and health contracts](docs/PERSISTENCE_AND_PREFLIGHT.md)
+- [Universal system-service boundary](docs/SYSTEM_SERVICE_BOUNDARY.md)
+- [Native local service protocol](docs/NATIVE_SERVICE_PROTOCOL.md)
+- [Linux local IPC transport reference](docs/LOCAL_IPC_TRANSPORT.md)
+- [Risk register](docs/RISK_REGISTER.md)
+- [Initial threat model](docs/THREAT_MODEL.md)
+- [Provenance policy](docs/PROVENANCE_POLICY.md)
+- [Decision log](docs/DECISIONS.md)
+- [Definition of done](docs/DEFINITION_OF_DONE.md)
+- [Initial GitHub backlog](docs/INITIAL_BACKLOG.md)
+- [Proposed implementation blueprint](docs/IMPLEMENTATION_BLUEPRINT.md)
+- [Reference-device intake checklist](docs/REFERENCE_DEVICE_INTAKE.md)
+- [Mi A2 candidate evaluation](docs/DEVICE_EVALUATIONS/xiaomi-mi-a2-jasmine-sprout.md)
+- [Contribution guide](CONTRIBUTING.md)
+- [Security policy](SECURITY.md)
+
+## Scope boundary for version 0.1
+
+UniversalOS will first validate **one portable core** against an emulator and a community-friendly, bootloader-unlockable Android-family lab device, with a developer-only installation flow. The initial release validates the reusable boot, recovery, update, profile, and compatibility contracts—not a device-specific product fork. Broad device support, a consumer app ecosystem, cellular certification, and iPhone support are explicitly out of scope until the reference implementation has passed its gates.
+
+## Portable core prototype
+
+The device-independent foundation is available in `core/universal_core`. It first selects a minimal Bootstrap Capsule from a synthetic non-personal discovery record, then resolves portable hardware profiles and package manifests without any phone model logic. It is a **host-side prototype only** and cannot flash or boot a phone.
+
+```sh
+python3 -m pip install -e .
+python3 tools/validate_contracts.py
+python3 -m unittest discover -s tests -v
+```
+
+See [Portable core contracts](docs/CORE_CONTRACTS.md) for its security boundary and next gates.
+
+## Working on the project
+
+Use the [GitHub issue tracker](https://github.com/Neel2667/universal-OS/issues) for all planned work and the project board for sequencing. Each pull request must link to an issue, include test evidence, and respect the security and compatibility rules in this repository.
+
+## Current branch
+
+Development work is performed on the `arena/01a00b34-universal-os` branch through pull requests into `main`.

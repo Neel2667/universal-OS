@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universalos.dev/specs/package-manifest/schema-v1.json",
+  "title": "UniversalOS Package Manifest v1",
+  "description": "Declarative package metadata. The manifest is an input to local trust and compatibility checks; it never authorizes itself.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "package_id",
+    "version",
+    "kind",
+    "provides",
+    "compatibility",
+    "payload",
+    "security"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "package_id": { "type": "string", "pattern": "^uos\\.[a-z0-9][a-z0-9._-]*$" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "kind": { "enum": ["core", "device-support", "app"] },
+    "provides": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component"],
+      "properties": {
+        "component": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$" }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["architectures", "profile_ids", "bootstrap_version_range"],
+      "properties": {
+        "architectures": {
+          "type": "array",
+          "items": { "enum": ["arm64", "armv7", "x86_64", "riscv64"] },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "profile_ids": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "kernel_abi": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "bootstrap_version_range": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "required_capabilities": {
+          "type": "object",
+          "additionalProperties": { "const": "working" }
+        }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sha256", "bytes", "install_mode"],
+      "properties": {
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "bytes": { "type": "integer", "minimum": 0 },
+        "install_mode": { "enum": ["inactive-slot", "transactional", "user-space"] }
+      }
+    },
+    "security": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["signer", "signature", "expires"],
+      "properties": {
+        "signer": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$" },
+        "signature": { "type": "string", "minLength": 1 },
+        "expires": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universalos.dev/specs/discovery-record/schema-v1.json",
+  "title": "UniversalOS Preliminary Discovery Record v1",
+  "description": "Non-personal compatibility facts collected by a Universal Installer or recovery transport before Discovery Base is installed. This is preliminary evidence only; Discovery Base must verify relevant facts locally before a full-system plan is accepted.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "record_id", "architecture", "hardware", "boot", "transport"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "record_id": {"type": "string", "pattern": "^uos\\.discovery\\.[a-z0-9][a-z0-9._-]*$"},
+    "architecture": {"enum": ["arm64", "armv7", "x86_64", "riscv64"]},
+    "hardware": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["board_family", "soc_family"],
+      "properties": {
+        "board_family": {"type": "string", "minLength": 1, "maxLength": 120},
+        "soc_family": {"type": "string", "minLength": 1, "maxLength": 120},
+        "revision_class": {"type": "string", "maxLength": 120}
+      }
+    },
+    "boot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bootloader_state", "partition_model"],
+      "properties": {
+        "bootloader_state": {"enum": ["unlocked", "locked", "unknown"]},
+        "partition_model": {"enum": ["ab", "transactional", "single-slot"]}
+      }
+    },
+    "transport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["protocol"],
+      "properties": {
+        "protocol": {"enum": ["fastboot", "recovery", "adb"]}
+      }
+    }
+  }
+}

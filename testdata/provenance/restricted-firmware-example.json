@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "component_id": "uos.firmware.example-user-extraction",
+  "kind": "firmware",
+  "version": "source-build-dependent",
+  "origin": {"url": "https://example.invalid/vendor-firmware-policy", "revision": "user-extraction-only"},
+  "license": {"spdx": "LicenseRef-Proprietary-User-Provided", "notice_required": true},
+  "redistribution": "user-extraction-only",
+  "integrity": {"sha256": "2222222222222222222222222222222222222222222222222222222222222222"},
+  "targets": {"architectures": ["arm64"], "profile_ids": ["uos.profile.example.research-v1"]},
+  "review": {"state": "needs-legal-review", "evidence": "Synthetic fixture only. No firmware is stored or distributed by this repository."}
+}

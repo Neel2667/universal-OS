@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universalos.dev/specs/service-protocol/request-v1.json",
+  "title": "UniversalOS local service request v1",
+  "description": "Transport-independent local IPC request envelope. Native implementations should use authenticated local peer credentials, not bearer tokens embedded in this envelope.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "request_id", "service", "method", "params"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "request_id": {"type": "string", "pattern": "^[a-zA-Z0-9._-]{1,120}$"},
+    "service": {"enum": ["device", "update", "health", "recovery"]},
+    "method": {"type": "string", "pattern": "^[a-z][a-z0-9._-]{1,120}$"},
+    "params": {"type": "object"}
+  }
+}

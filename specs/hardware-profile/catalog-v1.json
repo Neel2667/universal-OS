@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://universalos.dev/specs/hardware-profile/catalog-v1.json",
+  "title": "UniversalOS signed hardware profile catalog body v1",
+  "description": "The signed body of repository metadata with role=profiles. It maps locally measured non-personal facts to exactly one profile. Board and SoC wildcard matching is prohibited.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["profiles"],
+  "properties": {
+    "profiles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["profile", "match"],
+        "properties": {
+          "profile": {"$ref": "schema-v1.json"},
+          "match": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["board_families", "soc_families", "revision_classes"],
+            "properties": {
+              "board_families": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"}},
+              "soc_families": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$"}},
+              "revision_classes": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z0-9*][a-z0-9._*-]*$"}}
+            }
+          }
+        }
+      }
+    }
+  }
+}

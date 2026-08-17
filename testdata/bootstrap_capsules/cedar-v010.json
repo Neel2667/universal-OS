@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "capsule_id": "uos.bootstrap.synthetic-cedar",
+  "version": "0.1.0",
+  "compatibility": {"architectures": ["armv7"], "board_families": ["synthetic-cedar"], "soc_families": ["synthetic-r2"], "partition_models": ["transactional"], "transports": ["recovery"]},
+  "payload": {"sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", "bytes": 900, "install_mode": "bootstrap-capsule"},
+  "recovery": {"offline_recovery": true, "log_export": false},
+  "security": {"signer": "fixture-root", "signature": "fixture:fixture-root:trusted", "expires": "2030-01-01T00:00:00Z"}
+}

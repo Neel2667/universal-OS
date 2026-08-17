@@ -1,0 +1,1 @@
+{"schema_version":1,"adapter_id":"uos.adapter.synthetic.orion-v1","match":{"product_ids":["synthetic-orion"],"architecture":"arm64","board_family":"synthetic-orion","soc_family":"synthetic-q1","partition_model":"ab"},"transport":"fastboot","recovery":{"offline_path_required":true,"factory_restore_documented":false}}

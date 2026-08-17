@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/Neel2667/universal-OS/security/advisories/new
+    about: Please report sensitive security issues privately. Do not open a public issue.
+  - name: Project plan
+    url: https://github.com/Neel2667/universal-OS/blob/main/docs/PROJECT_PLAN.md
+    about: Read the current scope, phases, and exit gates before proposing work.
