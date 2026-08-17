@@ -36,6 +36,7 @@ The cloud distributes candidates; the local device verifier makes the security a
 | Privacy/account | Account-free basic operation; diagnostics/crash upload are opt-in; no hidden telemetry. See ADR-005. |
 | Device lifecycle | Profiled/lab/verified/maintained/retired tiers require evidence; see ADR-007. |
 | AI | Explicitly excluded from current core scope. Do not reintroduce it unless the owner reopens the decision. |
+| UI prototype | Static interactive workspace/update/privacy/recovery prototype is available under `prototype/`; it is visual only and not connected to hardware services. |
 | Device claims | No phone is supported yet. No physical device has been flashed, rebooted, or modified by this project. |
 
 ## Read in this order
@@ -51,10 +52,11 @@ The cloud distributes candidates; the local device verifier makes the security a
 9. [Privacy/account decision](adr/ADR-005-privacy-diagnostics-account-policy.md)
 10. [Device lifecycle decision](adr/ADR-007-device-lifecycle-policy.md)
 11. [Experience journeys](UX_JOURNEYS.md) and [performance/accessibility budgets](PERFORMANCE_ACCESSIBILITY.md)
-12. [Managed workstreams](WORKSTREAMS.md)
-13. [Project plan](PROJECT_PLAN.md)
-14. [Risk register](RISK_REGISTER.md) and [threat model](THREAT_MODEL.md)
-15. [Definition of done](DEFINITION_OF_DONE.md)
+12. [UI foundation](UI_FOUNDATION.md), [Stitch prompt pack](STITCH_PROMPT_PACK.md), and [static prototype](../prototype/README.md)
+13. [Managed workstreams](WORKSTREAMS.md)
+14. [Project plan](PROJECT_PLAN.md)
+15. [Risk register](RISK_REGISTER.md) and [threat model](THREAT_MODEL.md)
+16. [Definition of done](DEFINITION_OF_DONE.md)
 
 ## What exists in code today
 
