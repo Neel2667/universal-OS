@@ -32,6 +32,8 @@ UniversalOS aims to make supported mobile hardware useful for longer through **o
 - [Application platform](docs/APP_PLATFORM.md)
 - [UniversalOS UI foundation](docs/UI_FOUNDATION.md)
 - [Google Stitch workflow](docs/STITCH_WORKFLOW.md)
+- [Google Stitch prompt pack](docs/STITCH_PROMPT_PACK.md)
+- [Static shell prototype](prototype/README.md)
 - [Performance and accessibility budgets](docs/PERFORMANCE_ACCESSIBILITY.md)
 - [System architecture](docs/ARCHITECTURE.md)
 - [Accepted system/hardware base decision](docs/adr/ADR-002-system-and-hardware-base.md)
