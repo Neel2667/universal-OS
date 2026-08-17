@@ -45,6 +45,7 @@ UniversalOS aims to make supported mobile hardware useful for longer through **o
 - [Signed Bootstrap Capsule catalog](docs/SIGNED_BOOTSTRAP_CATALOG.md)
 - [Bootstrap adapter and recovery proof](docs/BOOTSTRAP_ADAPTER_AND_RECOVERY.md)
 - [Connectivity bootstrap and installation data flow](docs/CONNECTIVITY_BOOTSTRAP.md)
+- [Network provisioning contract](docs/NETWORK_PROVISIONING.md)
 - [USB and offline resumable transfer protocol](docs/USB_TRANSFER_PROTOCOL.md)
 - [Universal Installer end-to-end rehearsal](docs/INSTALLER_REHEARSAL.md)
 - [USB Installer companion](docs/INSTALLER_COMPANION.md)
