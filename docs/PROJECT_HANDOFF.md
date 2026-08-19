@@ -102,7 +102,7 @@ Rust/Cargo/rustfmt/clippy unavailable on Arena build host; dependency-free nativ
 BitBake/Yocto unavailable on Arena build host
 QEMU ARM64 unavailable on Arena build host
 External Rust/Debian toolchain endpoints were unavailable from this host
-Arena is selected for provisioning; use `.devcontainer/devcontainer.json` / `native/environment/ARENA_OPTION1.md`
+Arena is selected for provisioning; use `.devcontainer/devcontainer.json` / `native/environment/ARENA_OPTION1.md`. Local Docker/Podman fallback is `tools/run_native_container.sh`; see `docs/LOCAL_NATIVE_BUILD.md`.
 ```
 
 Run the non-destructive diagnostic:
